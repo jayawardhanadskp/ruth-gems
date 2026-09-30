@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export function ImageGallery({
@@ -13,53 +13,54 @@ export function ImageGallery({
   name: string;
 }) {
   const [active, setActive] = useState(0);
+  const reduce = useReducedMotion();
 
   return (
-    <div className="flex flex-col gap-[18px] lg:w-[39.583vw] lg:shrink-0">
-      <div className="relative h-[320px] w-full overflow-hidden rounded sm:h-[420px] lg:h-[21.406vw]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={images[active]}
-              alt={name}
-              fill
-              sizes="(max-width: 1024px) 100vw, 760px"
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      {images.length > 1 && (
-        <div className="flex gap-4">
-          {images.map((src, i) => (
-            <button
-              key={src + i}
-              onClick={() => setActive(i)}
-              className={cn(
-                "relative h-[90px] flex-1 overflow-hidden lg:h-[6.771vw]",
-                i === active
-                  ? "rounded-lg ring-2 ring-inset ring-brand-green-light"
-                  : "rounded-[3px]"
-              )}
+    <div className="flex min-w-0 flex-col gap-4">
+      <div className="surface relative aspect-square w-full overflow-hidden rounded-3xl bg-sand p-2 shadow-md sm:aspect-[5/4] lg:aspect-square">
+        <div className="relative size-full overflow-hidden rounded-2xl bg-white">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: reduce ? 1 : 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+              className="absolute inset-0"
             >
               <Image
-                src={src}
-                alt=""
+                src={images[active]}
+                alt={`${name}, view ${active + 1} of ${images.length}`}
                 fill
-                sizes="200px"
+                sizes="(max-width: 1024px) 100vw, 680px"
                 className="object-cover"
+                priority
               />
-            </button>
-          ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
+      </div>
+      {images.length > 1 && (
+        <ul className="grid grid-cols-4 gap-3" aria-label="Gemstone views">
+          {images.map((src, i) => (
+            <li key={src + i}>
+              <button
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`Show view ${i + 1}`}
+                aria-current={i === active}
+                className={cn(
+                  "relative block aspect-square min-h-11 w-full cursor-pointer overflow-hidden rounded-xl border bg-white outline-none transition-[transform,border-color,box-shadow,opacity] duration-[var(--duration-press)] ease-out active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                  i === active
+                    ? "border-brand-green shadow-md ring-1 ring-brand-green"
+                    : "border-line opacity-80 [@media(hover:hover)]:hover:opacity-100"
+                )}
+              >
+                <Image src={src} alt="" fill sizes="160px" className="object-cover" />
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

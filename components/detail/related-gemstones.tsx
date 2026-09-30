@@ -1,36 +1,33 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { GemstoneCard } from "@/components/common/gemstone-card";
-import { StaggerGrid, StaggerItem } from "@/components/motion/reveal";
+import { Carousel } from "@/components/common/carousel";
+import { SectionHeading } from "@/components/common/section-heading";
+import { Reveal } from "@/components/motion/reveal";
+import { Button } from "@/components/ui/button";
 import type { Gemstone } from "@/types/gemstone";
 
 export function RelatedGemstones({ items }: { items: Gemstone[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="container-page flex flex-col gap-8 pt-2 pb-[88px]">
-      <div className="flex items-end justify-between">
-        <div className="flex flex-col gap-1.5">
-          <p className="text-xs font-semibold tracking-[2.16px] text-brand-gold-muted uppercase">
-            You may also like
-          </p>
-          <h2 className="font-display text-[38px] font-semibold text-brand-ink">
-            Related Gemstones
-          </h2>
-        </div>
-        <Link
-          href="/collection"
-          className="text-sm font-semibold tracking-[0.28px] text-brand-green-light hover:underline"
-        >
-          View all →
-        </Link>
-      </div>
-      <StaggerGrid className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((gemstone) => (
-          <StaggerItem key={gemstone.slug}>
-            <GemstoneCard gemstone={gemstone} />
-          </StaggerItem>
-        ))}
-      </StaggerGrid>
+    <section className="section-y">
+      <Reveal className="container-page">
+        <Carousel
+          label="Related gemstones"
+          heading={<SectionHeading eyebrow="You may also like" title="Related Gemstones" />}
+          action={
+            <Button variant="ghost" nativeButton={false} render={<Link href="/collection" />}>
+              View all
+              <ArrowRight />
+            </Button>
+          }
+          slideClassName="basis-[86%] sm:basis-1/2 lg:basis-1/4"
+          slides={items.map((gemstone) => (
+            <GemstoneCard key={gemstone.slug} gemstone={gemstone} />
+          ))}
+        />
+      </Reveal>
     </section>
   );
 }

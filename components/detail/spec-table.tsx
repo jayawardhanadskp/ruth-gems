@@ -16,19 +16,16 @@ export function SpecTable({ gemstone }: { gemstone: Gemstone }) {
   ];
 
   return (
-    <div className="flex flex-col">
-      {rows.map(([label, value], i) => (
+    <dl className="flex flex-col">
+      {rows.map(([label, value]) => (
         <div
           key={label}
-          className={
-            "flex items-center justify-between py-4 " +
-            "border-b border-[#e6e0d5]"
-          }
+          className="flex items-baseline justify-between gap-6 border-b border-line py-4"
         >
-          <span className="text-sm font-medium tracking-[0.28px] text-[#6e6b67]">{label}</span>
-          <span className="font-display text-[22px] font-medium text-brand-ink">{value}</span>
+          <dt className="text-sm font-medium text-stone">{label}</dt>
+          <dd className="text-right font-display text-xl font-medium text-brand-ink sm:text-2xl">{value}</dd>
         </div>
       ))}
-    </div>
+    </dl>
   );
 }
