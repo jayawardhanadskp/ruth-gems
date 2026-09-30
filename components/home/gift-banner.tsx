@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/common/section-heading";
+import { ScrollArrows } from "@/components/common/scroll-arrows";
 import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/reveal";
 
 const images = [
@@ -12,16 +13,17 @@ export function GiftBanner() {
   return (
     <section className="bg-[#f5faf9] py-16 sm:py-20">
       <div className="container-page flex flex-col gap-8">
-        <Reveal>
+        <Reveal className="flex items-end justify-between gap-6">
           <SectionHeading
             eyebrow="A Gift from Ceylon"
             title="Give the Gift of a Ceylon Sapphire"
           />
+          <ScrollArrows targetId="gift-track" className="shrink-0" />
         </Reveal>
-        <StaggerGrid className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <StaggerGrid id="gift-track" className="flex snap-x gap-4 overflow-x-auto [&>*]:w-full [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-[calc(33.333%-11px)]">
           {images.map((src) => (
             <StaggerItem key={src}>
-              <div className="relative h-[280px] w-full overflow-hidden rounded-xl sm:h-[358px]">
+              <div className="relative h-[280px] w-full overflow-hidden rounded-lg sm:h-[358px]">
                 <Image
                   src={src}
                   alt="A gift of Ceylon sapphire"

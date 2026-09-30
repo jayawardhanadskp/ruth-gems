@@ -6,7 +6,7 @@ export function StatusPill({ status }: { status: GemStatus }) {
   return (
     <div
       className={cn(
-        "flex items-center gap-2 rounded-xl px-2.5 py-1.5",
+        "flex items-center gap-2 rounded-lg px-2.5 py-1.5",
         isAvailable ? "bg-brand-green-light" : "bg-[#a5854a]"
       )}
     >

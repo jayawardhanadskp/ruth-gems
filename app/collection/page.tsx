@@ -28,23 +28,25 @@ export default async function CollectionPage({
 
   return (
     <>
-      <div className="container-page flex flex-col gap-2 pt-6">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Collection" }]} />
+      <div className="border-b border-[#e2d8c6] bg-brand-cream/60 shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+        <div className="container-page flex flex-col gap-2 pt-6">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Collection" }]} />
+        </div>
+
+        <div className="container-page flex flex-col gap-3 py-8 sm:py-10">
+          <p className="text-xs font-medium tracking-[2px] text-brand-gold-muted uppercase">
+            Ceylon Gemstones
+          </p>
+          <h1 className="font-display text-5xl font-medium text-brand-forest-dark">The Collection</h1>
+          <p className="max-w-2xl text-base text-muted-foreground">
+            Every stone we currently hold, with its weight, cut, treatment and
+            origin stated plainly. Filter to find the one that speaks to you,
+            then arrange a private viewing.
+          </p>
+        </div>
       </div>
 
-      <div className="container-page flex flex-col gap-3 py-8 sm:py-10">
-        <p className="text-xs font-medium tracking-[2px] text-brand-gold-muted uppercase">
-          Ceylon Gemstones
-        </p>
-        <h1 className="font-display text-5xl font-medium text-brand-forest-dark">The Collection</h1>
-        <p className="max-w-2xl text-base text-muted-foreground">
-          Every stone we currently hold, with its weight, cut, treatment and
-          origin stated plainly. Filter to find the one that speaks to you,
-          then arrange a private viewing.
-        </p>
-      </div>
-
-      <div className="container-page flex flex-col gap-10 pb-16 lg:flex-row lg:items-start lg:gap-10">
+      <div className="container-page flex flex-col gap-10 pt-10 pb-16 lg:flex-row lg:items-start lg:gap-10">
         <div className="hidden lg:block">
           <FilterSidebar facets={facets} />
         </div>

@@ -47,7 +47,7 @@ export function FaqAccordion() {
             <AccordionItem
               key={faq.question}
               value={`faq-${i}`}
-              className="rounded-xl border border-[#dadada] px-6 py-1"
+              className="rounded-lg border border-[#dadada] px-6 py-1"
             >
               <AccordionTrigger className="py-5! font-display text-xl text-brand-ink sm:text-2xl">
                 {faq.question}

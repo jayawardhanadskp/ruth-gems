@@ -26,7 +26,21 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="container-page flex flex-col items-center gap-10 py-16 sm:py-20">
+    <section className="container-page relative flex flex-col items-center gap-10 py-16 sm:py-20">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/decor/ruby.svg"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute left-[4%] top-[14%] hidden w-[5.5%] max-w-[100px] lg:block"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/decor/vector.svg"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute bottom-[8%] left-[21%] hidden w-[5%] max-w-[90px] lg:block"
+      />
       <Reveal>
         <SectionHeading
           eyebrow="How it works"
@@ -37,7 +51,20 @@ export function HowItWorks() {
       <StaggerGrid className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step) => (
           <StaggerItem key={step.number}>
-            <div className="flex h-full flex-col items-center gap-6 rounded-xl border-4 border-white bg-[#f4f4f4] p-6 text-center">
+            <div className="relative flex h-full flex-col items-center gap-6 rounded-lg border-4 border-white bg-[#f4f4f4] p-6 text-center">
+              {step.number === "04" && (
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -bottom-[19%] -left-[300%] -right-[12.8%] -top-[24%] -z-10 hidden lg:block"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/decor/step-arrow.svg"
+                    alt=""
+                    className="size-full max-w-none"
+                  />
+                </div>
+              )}
               <p className="font-display text-4xl font-semibold text-[#a9873f]">
                 {step.number}
               </p>

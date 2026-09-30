@@ -27,40 +27,38 @@ export function TrustSection() {
         <p className="text-sm font-medium tracking-[1px] text-brand-ink uppercase sm:text-base">
           Trust & transparency
         </p>
-        <h2 className="font-display text-4xl font-medium leading-tight text-brand-ink sm:text-5xl">
+        <h2 className="font-display text-4xl font-semibold leading-tight text-brand-ink sm:text-5xl">
           Everything we know about a stone, you know too
         </h2>
       </Reveal>
 
-      <div className="grid w-full grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_1.4fr_1fr]">
-        <StaggerGrid className="flex flex-col gap-6">
-          {cards.slice(0, 2).map((card) => (
-            <StaggerItem key={card.title}>
-              <TrustCard {...card} />
-            </StaggerItem>
-          ))}
-        </StaggerGrid>
-
-        <Reveal className="relative order-first mx-auto h-[260px] w-full max-w-[420px] overflow-hidden rounded-xl sm:h-[360px] lg:order-none lg:h-[440px] lg:max-w-none">
+      <div className="relative mx-auto flex w-full max-w-[1090px] flex-col gap-4 lg:block lg:h-[610px]">
+        <Reveal className="relative order-first mx-auto h-[300px] w-[270px] overflow-hidden sm:h-[420px] sm:w-[378px] lg:absolute lg:top-[22px] lg:left-1/2 lg:h-[553px] lg:w-[498px] lg:-translate-x-1/2">
           <Image
-            src="/images/home/trust-image.png"
-            alt="Ceylon gem trading"
-            fill
-            sizes="(max-width: 1024px) 90vw, 33vw"
-            className="object-cover"
+            src="/images/home/trust-figma.png"
+            alt="Two Ceylon gem traders examining stones"
+            width={1376}
+            height={768}
+            sizes="(max-width: 1024px) 60vw, 500px"
+            className="absolute top-0 left-0 h-full w-[199%] max-w-none"
           />
         </Reveal>
-
-        <StaggerGrid className="flex flex-col gap-6">
-          {cards.slice(2).map((card) => (
-            <StaggerItem key={card.title}>
+        {cards.map((card, i) => (
+          <StaggerGrid
+            key={card.title}
+            className={
+              "lg:absolute lg:w-[31.5%] " +
+              ["lg:top-0 lg:left-0", "lg:top-0 lg:right-0", "lg:bottom-0 lg:left-0", "lg:right-0 lg:bottom-0"][i]
+            }
+          >
+            <StaggerItem>
               <TrustCard {...card} />
             </StaggerItem>
-          ))}
-        </StaggerGrid>
+          </StaggerGrid>
+        ))}
       </div>
 
-      <Reveal className="max-w-xl text-center text-lg text-brand-ink">
+      <Reveal className="max-w-xl text-center text-lg text-gray-500">
         The gem trade has survived on reputation for two thousand years. We
         would rather lose a sale than a name.
       </Reveal>
@@ -70,11 +68,11 @@ export function TrustSection() {
 
 function TrustCard({ title, body }: { title: string; body: string }) {
   return (
-    <div className="flex h-full flex-col gap-3 rounded-xl bg-[#f3ede2] p-6">
+    <div className="flex h-full flex-col gap-3 rounded-lg bg-[#f3ede2] p-6 lg:min-h-[200px] lg:justify-center">
       <p className="font-display text-xl font-semibold text-brand-ink">
         {title}
       </p>
-      <p className="text-sm leading-relaxed text-brand-ink/80">{body}</p>
+      <p className="text-sm leading-relaxed text-gray-500">{body}</p>
     </div>
   );
 }

@@ -41,7 +41,7 @@ export function CtaBanner({
                 rel="noreferrer"
               />
             }
-            className="flex h-[60px] items-center gap-2 rounded-xl border border-brand-green bg-brand-green px-6 text-base font-medium text-brand-cream hover:bg-brand-green/90 sm:w-[220px]"
+            className="flex h-[60px] items-center gap-2 rounded-lg border border-brand-green bg-brand-green px-6 text-base font-medium text-brand-cream hover:bg-brand-green/90 sm:w-[220px]"
           >
             <Image src="/images/icons/whatsapp.svg" alt="" width={24} height={24} />
             WhatsApp Us
@@ -50,7 +50,7 @@ export function CtaBanner({
             trigger={
               <Button
                 variant="outline"
-                className="flex h-[60px] items-center gap-2 rounded-xl border border-white bg-transparent px-6 text-base font-medium text-white hover:bg-white/10"
+                className="flex h-[60px] items-center gap-2 rounded-lg border border-white bg-transparent px-6 text-base font-medium text-white hover:bg-white/10 hover:text-white"
               >
                 <Image src="/images/icons/phone.svg" alt="" width={24} height={24} />
                 Call

@@ -15,8 +15,8 @@ export function ImageGallery({
   const [active, setActive] = useState(0);
 
   return (
-    <div className="flex flex-col gap-4 lg:w-[760px]">
-      <div className="relative h-[320px] w-full overflow-hidden rounded sm:h-[420px] lg:h-[411px]">
+    <div className="flex flex-col gap-[18px] lg:w-[39.583vw] lg:shrink-0">
+      <div className="relative h-[320px] w-full overflow-hidden rounded sm:h-[420px] lg:h-[21.406vw]">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -44,10 +44,10 @@ export function ImageGallery({
               key={src + i}
               onClick={() => setActive(i)}
               className={cn(
-                "relative h-[90px] flex-1 overflow-hidden rounded-xl sm:h-[130px]",
+                "relative h-[90px] flex-1 overflow-hidden lg:h-[6.771vw]",
                 i === active
-                  ? "ring-2 ring-brand-green-light"
-                  : "ring-1 ring-border"
+                  ? "rounded-lg ring-2 ring-inset ring-brand-green-light"
+                  : "rounded-[3px]"
               )}
             >
               <Image

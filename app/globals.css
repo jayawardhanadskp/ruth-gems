@@ -61,7 +61,7 @@
 }
 
 :root {
-  --background: #fffdf9;
+  --background: #ffffff;
   --foreground: #1a1614;
   --card: #ffffff;
   --card-foreground: #1a1614;
@@ -139,6 +139,7 @@
 
 @layer utilities {
   .font-display {
+    font-feature-settings: "dlig" 1;
     font-family: var(--font-display);
   }
 
@@ -149,4 +150,9 @@
   .container-page {
     @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10 xl:px-20;
   }
+}
+
+@keyframes photo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

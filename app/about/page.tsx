@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <div className="container-page py-6">
+      <div className="px-4 pt-6 sm:px-6 lg:h-[2.083vw] lg:px-[4.167vw] lg:pt-[1.25vw]">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Ceylon Gems" }]} />
       </div>
       <HeritageIntro />

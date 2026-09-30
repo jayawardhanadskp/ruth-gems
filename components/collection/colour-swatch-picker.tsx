@@ -38,14 +38,19 @@ export function ColourSwatchPicker({
           >
             <span
               className={cn(
-                "size-7 rounded-full border-2 transition-transform",
+                "size-7 rounded-full border-2 shadow-sm transition-all hover:scale-105",
                 isSelected
-                  ? "scale-110 border-brand-green"
-                  : "border-transparent"
+                  ? "scale-110 border-brand-green ring-2 ring-brand-green/30 ring-offset-2"
+                  : "border-white/60 hover:border-brand-gold-muted/50"
               )}
               style={{ backgroundColor: colourHex[colour] }}
             />
-            <span className="text-[10px] text-muted-foreground">
+            <span
+              className={cn(
+                "text-[10px] transition-colors",
+                isSelected ? "font-medium text-brand-ink" : "text-muted-foreground"
+              )}
+            >
               {colour}
             </span>
           </button>

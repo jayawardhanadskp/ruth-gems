@@ -58,7 +58,7 @@ export function FilterSidebar({ facets }: { facets: FilterCounts }) {
   };
 
   return (
-    <aside className="flex w-full flex-col gap-8 lg:w-[288px]">
+    <aside className="flex w-full flex-col gap-8 rounded-2xl border border-[#e2d8c6] bg-brand-cream/40 p-6 shadow-[0_1px_2px_rgba(2,33,23,0.04)] lg:w-[288px]">
       <FilterGroup title="Gem Type">
         <FilterCheckboxGroup
           options={withCounts(gemTypeOptions, facets.gemType)}
@@ -158,8 +158,9 @@ function FilterGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-border pb-6 last:border-none">
-      <p className="text-xs font-semibold tracking-[0.1em] text-brand-ink uppercase">
+    <div className="flex flex-col gap-4 border-b border-[#e2d8c6] pb-6 last:border-none">
+      <p className="flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-brand-gold-muted uppercase">
+        <span className="h-3 w-[3px] rounded-full bg-brand-gold-muted" />
         {title}
       </p>
       {children}

@@ -49,11 +49,13 @@ const staggerItem: Variants = {
 interface StaggerGridProps {
   children: ReactNode;
   className?: string;
+  id?: string;
 }
 
-export function StaggerGrid({ children, className }: StaggerGridProps) {
+export function StaggerGrid({ children, className, id }: StaggerGridProps) {
   return (
     <motion.div
+      id={id}
       className={className}
       variants={staggerContainer}
       initial="hidden"

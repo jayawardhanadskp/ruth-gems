@@ -32,9 +32,9 @@ const footerColumns = [
   {
     heading: "Contact",
     links: [
-      { label: "Arrange a Viewing", href: "/about#contact" },
-      { label: "Contact Us", href: "/about#contact" },
-      { label: "Visit the Office", href: "/about#contact" },
+      { label: "Arrange a Viewing", href: "/contact" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Visit the Office", href: "/contact" },
     ],
   },
 ];

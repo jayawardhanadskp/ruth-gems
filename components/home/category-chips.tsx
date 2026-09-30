@@ -19,7 +19,7 @@ export function CategoryChips() {
           <StaggerItem key={category.type} className="shrink-0">
             <Link
               href={`/collection?gemType=${encodeURIComponent(category.type)}`}
-              className="flex h-[220px] w-[150px] flex-col items-center justify-center gap-5 rounded-xl bg-white p-3 shadow-[0_0_4.5px_rgba(0,0,0,0.08)] transition-transform hover:-translate-y-1 sm:h-[242px] sm:w-full"
+              className="flex h-[220px] w-[150px] flex-col items-center justify-center gap-5 rounded-lg bg-white p-3 shadow-[0_0_4.5px_rgba(0,0,0,0.08)] transition-transform hover:-translate-y-1 sm:h-[242px] sm:w-full"
             >
               <div className="relative size-[110px] overflow-hidden rounded-full border border-[#f2f2f2] sm:size-[142px]">
                 <Image

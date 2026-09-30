@@ -7,7 +7,7 @@ import type { Gemstone } from "@/types/gemstone";
 
 export function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
   return (
-    <div className="group flex h-full flex-col gap-2.5 rounded-xl bg-white p-2.5 transition-shadow hover:shadow-lg">
+    <div className="group relative flex h-full flex-col gap-2.5 rounded-lg bg-white p-2.5 transition-shadow hover:shadow-lg">
       <div className="relative h-[220px] w-full overflow-hidden rounded-lg sm:h-[260px] lg:h-[294px]">
         <Image
           src={gemstone.images[0]}
@@ -22,7 +22,7 @@ export function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
         <button
           type="button"
           aria-label="Save gemstone"
-          className="absolute top-3 right-3 flex size-7 items-center justify-center rounded-full bg-brand-cream/90 text-brand-ink transition-colors hover:bg-brand-cream"
+          className="absolute top-3 right-3 z-10 flex size-7 items-center justify-center rounded-full bg-brand-cream/90 text-brand-ink transition-colors hover:bg-brand-cream"
         >
           <Heart className="size-3.5" />
         </button>
@@ -31,7 +31,10 @@ export function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
         <p className="text-xs tracking-[0.15em] text-[#a1937c]">
           {gemstone.referenceNo}
         </p>
-        <Link href={`/collection/${gemstone.slug}`} className="hover:underline">
+        <Link
+          href={`/collection/${gemstone.slug}`}
+          className="after:absolute after:inset-0 after:z-0 after:content-[''] hover:underline"
+        >
           <h3 className="font-display text-xl font-semibold text-brand-ink">
             {gemstone.name}
           </h3>

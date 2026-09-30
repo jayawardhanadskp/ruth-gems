@@ -133,7 +133,7 @@ export function EnquiryDialog({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 h-11 rounded-xl bg-brand-green text-brand-cream hover:bg-brand-green/90"
+                className="mt-2 h-11 rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90"
               >
                 {isSubmitting ? "Sending…" : "Send Enquiry"}
               </Button>

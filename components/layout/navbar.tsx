@@ -13,6 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { EnquiryDialog } from "@/components/common/enquiry-dialog";
+import { TopBar } from "@/components/layout/top-bar";
 import { cn } from "@/lib/utils";
 
 const gemLinks = [
@@ -25,8 +26,8 @@ const gemLinks = [
 
 const navLinks = [
   { label: "Ceylon Gems", href: "/about" },
-  { label: "Gem Guide", href: "/about" },
-  { label: "Contact", href: "/about#contact" },
+  { label: "About", href: "/about-us" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -42,6 +43,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-sm">
+      <TopBar />
       <motion.div
         className="container-page flex items-center justify-between"
         animate={{ paddingTop: scrolled ? 12 : 24, paddingBottom: scrolled ? 12 : 24 }}
@@ -74,7 +76,7 @@ export function Navbar() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-full left-0 flex w-56 flex-col gap-1 rounded-xl border border-border bg-white p-2 shadow-lg"
+                className="absolute top-full left-0 flex w-56 flex-col gap-1 rounded-lg border border-border bg-white p-2 shadow-lg"
               >
                 {gemLinks.map((link) => (
                   <Link
@@ -102,7 +104,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <EnquiryDialog
             trigger={
-              <Button className="hidden h-11 rounded-xl bg-brand-green px-4 text-[15px] font-medium text-brand-cream hover:bg-brand-green/90 sm:inline-flex">
+              <Button className="hidden h-11 rounded-lg bg-brand-green px-4 text-[15px] font-medium text-brand-cream hover:bg-brand-green/90 sm:inline-flex">
                 Arrange a Viewing
               </Button>
             }
@@ -147,7 +149,7 @@ export function Navbar() {
                 ))}
                 <EnquiryDialog
                   trigger={
-                    <Button className="mt-4 h-11 w-full rounded-xl bg-brand-green text-brand-cream hover:bg-brand-green/90">
+                    <Button className="mt-4 h-11 w-full rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90">
                       Arrange a Viewing
                     </Button>
                   }
