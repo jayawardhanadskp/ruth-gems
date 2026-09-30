@@ -15,8 +15,10 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <>
-      <div className="px-4 pt-6 sm:px-6 lg:px-[4.167vw] lg:pt-[1.25vw]">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+      <div className="bg-ivory">
+        <div className="container-page pt-2">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+        </div>
       </div>
       <AboutUsHero />
       <Principles />

@@ -5,32 +5,30 @@ import { Button } from "@/components/ui/button";
 
 export function ClosingCta() {
   return (
-    <section className="flex flex-col items-center bg-brand-cream px-4 py-14 text-center sm:px-6 lg:px-[4.167vw] lg:pt-[5vw] lg:pb-[5.208vw]">
-      <Reveal className="flex flex-col items-center">
-        <p className="text-xs font-semibold tracking-[2px] text-brand-gold-muted uppercase lg:text-[0.625vw] lg:tracking-[0.104vw]">
+    <section className="section-y">
+      <Reveal className="container-narrow flex flex-col items-center gap-5 text-center">
+        <p className="eyebrow flex items-center gap-3">
+          <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
           Come and See for Yourself
+          <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
         </p>
-        <h2 className="mt-3 font-display text-4xl font-semibold text-brand-ink sm:text-5xl lg:mt-[0.833vw] lg:text-[2.5vw]">
+        <h2 className="font-display type-h2 font-medium text-balance text-brand-ink">
           Let&apos;s find your stone, together
         </h2>
-        <p className="mt-3 max-w-[620px] text-base leading-[1.7] text-[#5c5347] lg:mt-[0.833vw] lg:max-w-[32.292vw] lg:text-[0.833vw] lg:leading-[1.406vw]">
+        <p className="type-lead max-w-2xl text-stone">
           Tell us what you&apos;re looking for, or arrange a private viewing
           in Colombo or Ratnapura. We reply personally to every enquiry.
         </p>
-        <div className="mt-7 flex flex-wrap justify-center gap-4 lg:mt-[1.563vw] lg:gap-[0.833vw]">
+        <div className="mt-3 flex flex-wrap justify-center gap-3">
           <EnquiryDialog
             title="Arrange a Viewing"
-            trigger={
-              <Button className="h-auto rounded-md bg-brand-forest-dark px-[34px] py-[18px] text-[15px] font-semibold tracking-[0.3px] text-brand-cream hover:bg-brand-forest-dark/90">
-                Arrange a Viewing
-              </Button>
-            }
+            trigger={<Button size="lg">Arrange a Viewing</Button>}
           />
           <Button
+            size="lg"
             variant="outline"
             nativeButton={false}
             render={<Link href="/contact" />}
-            className="h-auto rounded-md border-[1.4px] border-brand-gold-muted bg-transparent px-[34px] py-[17px] text-[15px] font-semibold tracking-[0.3px] text-brand-gold-muted hover:bg-brand-gold-muted/10 hover:text-brand-gold-muted"
           >
             Contact Us
           </Button>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
+import { Parallax } from "@/components/motion/parallax";
 
 const checklist = [
   "Private viewings by appointment, in Colombo or Ratnapura",
@@ -10,42 +11,47 @@ const checklist = [
 
 export function Difference() {
   return (
-    <Reveal className="flex flex-col items-center gap-10 bg-white px-4 py-14 sm:px-6 lg:flex-row lg:items-center lg:gap-[3.75vw] lg:px-[4.167vw] lg:py-[4.688vw]">
-      <div className="relative h-[320px] w-full max-w-[600px] overflow-hidden rounded-xl sm:h-[420px] lg:h-[26.042vw] lg:w-[31.25vw] lg:rounded-[0.625vw]">
-        <Image
-          src="/images/about-us/difference.png"
-          alt="Ruth Gems client examining a sapphire in natural light"
-          fill
-          sizes="(min-width: 1024px) 31vw, 90vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="flex-1">
-        <p className="text-xs font-semibold tracking-[1.8px] text-brand-gold-muted uppercase lg:text-[0.625vw] lg:tracking-[0.094vw]">
-          The Ruth Gems Difference
-        </p>
-        <h2 className="mt-3 font-display text-3xl leading-tight font-semibold text-brand-ink sm:text-[38px] lg:mt-[0.729vw] lg:text-[1.979vw] lg:leading-[2.24vw]">
-          Buying a gem should feel like a privilege, not a transaction
-        </h2>
-        <p className="mt-4 text-base leading-[1.75] text-[#5c5347] lg:mt-[1.042vw] lg:text-[0.833vw] lg:leading-[1.458vw]">
-          We believe a fine stone deserves to be chosen slowly. Clients meet
-          us privately, examine each gem in natural light, and take all the
-          time they need — with honest guidance and no pressure to decide.
-          Whether you are buying your first sapphire or adding to a serious
-          collection, the experience is the same: calm, considered and
-          completely personal.
-        </p>
-        <div className="mt-6 flex flex-col gap-3.5 lg:mt-[1.354vw] lg:gap-[0.729vw]">
-          {checklist.map((item) => (
-            <div key={item} className="flex items-center gap-3 lg:gap-[0.625vw]">
-              <Check className="size-5 shrink-0 text-brand-green-light lg:size-[1.042vw]" strokeWidth={2.4} />
-              <p className="text-[15px] font-medium text-brand-ink lg:text-[0.781vw]">
-                {item}
-              </p>
-            </div>
-          ))}
+    <section className="section-y bg-ivory">
+      <Reveal className="container-page grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sand shadow-lg ring-1 ring-brand-ink/5 lg:col-span-6">
+          <Parallax className="absolute -inset-y-6 inset-x-0" distance={20}>
+            <Image
+              src="/images/about-us/difference.png"
+              alt="Ruth Gems client examining a sapphire in natural light"
+              fill
+              sizes="(min-width: 1024px) 46vw, 92vw"
+              className="object-cover"
+            />
+          </Parallax>
         </div>
-      </div>
-    </Reveal>
+        <div className="flex flex-col gap-5 lg:col-span-6">
+          <p className="eyebrow flex items-center gap-3">
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
+            The Ruth Gems Difference
+          </p>
+          <h2 className="font-display type-h2 font-medium text-balance text-brand-ink">
+            Buying a gem should feel like a privilege, not a transaction
+          </h2>
+          <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
+            We believe a fine stone deserves to be chosen slowly. Clients meet
+            us privately, examine each gem in natural light, and take all the
+            time they need — with honest guidance and no pressure to decide.
+            Whether you are buying your first sapphire or adding to a serious
+            collection, the experience is the same: calm, considered and
+            completely personal.
+          </p>
+          <ul className="mt-2 flex flex-col gap-4">
+            {checklist.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
+                  <Check className="size-3.5 text-brand-green" strokeWidth={2.5} />
+                </span>
+                <span className="font-medium text-brand-ink">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
+    </section>
   );
 }
