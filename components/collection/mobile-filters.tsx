@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,27 +13,26 @@ import {
 import { FilterSidebar } from "@/components/collection/filter-sidebar";
 import type { FilterCounts } from "@/types/gemstone";
 
+/** Bottom sheet on phones: thumb-reachable, Apply stays pinned. */
 export function MobileFilters({ facets }: { facets: FilterCounts }) {
+  const [open, setOpen] = useState(false);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        render={
-          <Button
-            variant="outline"
-            className="flex h-11 items-center gap-2 rounded-lg lg:hidden"
-          />
-        }
+        render={<Button variant="outline" className="w-full sm:w-auto lg:hidden" />}
       >
         <SlidersHorizontal className="size-4" />
         Filters
       </SheetTrigger>
-      <SheetContent side="left" className="w-[320px] overflow-y-auto p-0">
-        <SheetHeader>
-          <SheetTitle className="font-display text-xl">Filters</SheetTitle>
+      <SheetContent
+        side="bottom"
+        className="max-h-[88dvh] gap-0 overflow-y-auto rounded-t-3xl p-0"
+      >
+        <div aria-hidden className="mx-auto mt-3 h-1 w-10 rounded-full bg-line" />
+        <SheetHeader className="px-5 pt-3 pb-2">
+          <SheetTitle className="font-display text-2xl font-medium">Filters</SheetTitle>
         </SheetHeader>
-        <div className="px-4 pb-6">
-          <FilterSidebar facets={facets} />
-        </div>
+        <FilterSidebar facets={facets} variant="sheet" onApplied={() => setOpen(false)} />
       </SheetContent>
     </Sheet>
   );

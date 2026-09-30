@@ -14,24 +14,21 @@ export function FilterCheckboxGroup({
   onToggle,
 }: FilterCheckboxGroupProps) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="-mx-2 flex flex-col">
       {options.map((option) => (
         <label
           key={option.label}
-          className="group flex cursor-pointer items-center justify-between gap-2 rounded-md px-1.5 py-1 text-sm text-[#3c3834] transition-colors hover:bg-brand-green/5"
+          className="group flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg px-2 text-sm text-ink-soft transition-colors duration-[var(--duration-hover)] hover:bg-sand/70"
         >
-          <span className="flex items-center gap-2.5">
+          <span className="flex items-center gap-3">
             <Checkbox
               checked={selected.includes(option.label)}
               onCheckedChange={() => onToggle(option.label)}
-              className="border-brand-gold-muted/40 data-checked:border-brand-green data-checked:bg-brand-green"
             />
             {option.label}
           </span>
           {typeof option.count === "number" && (
-            <span className="rounded-full bg-brand-gold-muted/10 px-2 py-0.5 text-xs text-brand-gold-muted">
-              {option.count}
-            </span>
+            <span className="text-xs text-stone tabular-nums">{option.count}</span>
           )}
         </label>
       ))}

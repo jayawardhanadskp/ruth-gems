@@ -53,20 +53,21 @@ export function ActiveFilters() {
   if (chips.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5">
+    <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Active filters">
       {chips.map((chip) => (
         <button
           key={chip.key}
-          onClick={() => router.push(`/collection?${chip.remove().toString()}`)}
-          className="flex items-center gap-2 rounded-full border border-[#d2e0d8] bg-[#f0f5f2] py-2 pr-3 pl-3.5 text-sm font-medium text-brand-green"
+          onClick={() => router.push(`/collection?${chip.remove().toString()}`, { scroll: false })}
+          aria-label={`Remove filter ${chip.label}`}
+          className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/[0.07] pr-3.5 pl-4 text-sm font-semibold text-brand-green transition-[transform,background-color] duration-[var(--duration-press)] ease-out active:scale-[0.97] [@media(hover:hover)]:hover:bg-brand-green/[0.12]"
         >
           {chip.label}
-          <X className="size-3" />
+          <X className="size-3.5" />
         </button>
       ))}
       <button
-        onClick={() => router.push("/collection")}
-        className="text-sm font-medium text-brand-gold-muted hover:underline"
+        onClick={() => router.push("/collection", { scroll: false })}
+        className="min-h-11 cursor-pointer rounded-md px-2 text-sm font-semibold text-brand-gold-muted underline-offset-4 hover:underline"
       >
         Clear all
       </button>

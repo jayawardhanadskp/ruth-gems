@@ -37,7 +37,15 @@ function withCounts(options: string[], counts: Record<string, number>) {
   return options.map((label) => ({ label, count: counts[label] ?? 0 }));
 }
 
-export function FilterSidebar({ facets }: { facets: FilterCounts }) {
+export function FilterSidebar({
+  facets,
+  variant = "panel",
+  onApplied,
+}: {
+  facets: FilterCounts;
+  variant?: "panel" | "sheet";
+  onApplied?: () => void;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const store = useFiltersStore();
@@ -49,16 +57,25 @@ export function FilterSidebar({ facets }: { facets: FilterCounts }) {
 
   const apply = () => {
     const params = filtersToSearchParams(store);
-    router.push(`/collection?${params.toString()}`);
+    router.push(`/collection?${params.toString()}`, { scroll: false });
+    onApplied?.();
   };
 
   const clear = () => {
     store.clearAll();
-    router.push("/collection");
+    router.push("/collection", { scroll: false });
+    onApplied?.();
   };
 
   return (
-    <aside className="flex w-full flex-col gap-8 rounded-2xl border border-[#e2d8c6] bg-brand-cream/40 p-6 shadow-[0_1px_2px_rgba(2,33,23,0.04)] lg:w-[288px]">
+    <aside
+      aria-label="Filters"
+      className={
+        variant === "panel"
+          ? "surface flex w-full flex-col gap-7 rounded-2xl p-6 lg:w-[19rem]"
+          : "flex w-full flex-col gap-7 px-5 pt-2 pb-6"
+      }
+    >
       <FilterGroup title="Gem Type">
         <FilterCheckboxGroup
           options={withCounts(gemTypeOptions, facets.gemType)}
@@ -76,6 +93,7 @@ export function FilterSidebar({ facets }: { facets: FilterCounts }) {
       </FilterGroup>
 
       <FilterGroup title="Carat Weight">
+        <div className="px-2.5 pt-2">
         <Slider
           min={0.5}
           max={12}
@@ -86,7 +104,8 @@ export function FilterSidebar({ facets }: { facets: FilterCounts }) {
             store.setCaratRange(min, max);
           }}
         />
-        <div className="flex justify-between text-xs text-muted-foreground">
+        </div>
+        <div className="flex justify-between text-xs text-stone tabular-nums">
           <span>{(store.minCarat ?? 0.5).toFixed(2)} ct</span>
           <span>{(store.maxCarat ?? 12).toFixed(2)} ct</span>
         </div>
@@ -132,16 +151,20 @@ export function FilterSidebar({ facets }: { facets: FilterCounts }) {
         />
       </FilterGroup>
 
-      <div className="flex flex-col gap-3 pt-2">
-        <Button
-          onClick={apply}
-          className="h-11 w-full rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90"
-        >
+      <div
+        className={
+          variant === "sheet"
+            ? "sticky bottom-0 -mx-5 -mb-6 flex flex-col gap-1 border-t border-line bg-background px-5 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+            : "flex flex-col gap-1 pt-1"
+        }
+      >
+        <Button onClick={apply} size="lg" className="w-full">
           Apply Filters
         </Button>
         <button
+          type="button"
           onClick={clear}
-          className="text-sm font-medium text-brand-gold-muted hover:underline"
+          className="min-h-11 cursor-pointer rounded-md text-sm font-semibold text-brand-gold-muted underline-offset-4 hover:underline"
         >
           Clear all
         </button>
@@ -158,9 +181,9 @@ function FilterGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-[#e2d8c6] pb-6 last:border-none">
-      <p className="flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-brand-gold-muted uppercase">
-        <span className="h-3 w-[3px] rounded-full bg-brand-gold-muted" />
+    <div className="flex flex-col gap-3 border-b border-line pb-6 last:border-none last:pb-0">
+      <p className="eyebrow flex items-center gap-2.5">
+        <span aria-hidden className="size-1 rotate-45 bg-brand-gold" />
         {title}
       </p>
       {children}

@@ -32,11 +32,11 @@ export function SortSelect() {
           params.set("sort", value as string);
         }
         params.delete("page");
-        router.push(`/collection?${params.toString()}`);
+        router.push(`/collection?${params.toString()}`, { scroll: false });
       }}
     >
-      <SelectTrigger className="h-[46px] gap-2 rounded-md border-[#e6e0d5] px-4 text-sm text-[#1a1614]">
-        <span className="text-[#6e6b67]">Sort:</span>
+      <SelectTrigger aria-label="Sort" className="w-full min-w-0 gap-2 text-sm text-brand-ink sm:w-auto">
+        <span className="hidden text-stone sm:inline">Sort:</span>
         <SelectValue>
           {sortOptions.find((o) => o.value === current)?.label}
         </SelectValue>
