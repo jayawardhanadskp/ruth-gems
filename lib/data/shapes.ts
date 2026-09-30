@@ -1,12 +1,12 @@
 import type { GemShape } from "@/types/gemstone";
 
 export const shapes: GemShape[] = [
-  { name: "Cushion", description: "Soft corners, vintage warmth", icon: "/images/home/shape-icon.png" },
-  { name: "Round", description: "Maximum light return", icon: "/images/home/shape-icon.png" },
-  { name: "Emerald", description: "Step cut, clarity on display", icon: "/images/home/shape-icon.png" },
-  { name: "Pear", description: "A drop of light, with direction", icon: "/images/home/shape-icon.png" },
-  { name: "Heart", description: "A romantic, symmetrical silhouette", icon: "/images/home/shape-icon.png" },
-  { name: "Cabochon", description: "Domed for stars and sheen", icon: "/images/home/shape-icon.png" },
+  { name: "Cushion", description: "Soft corners, vintage warmth", icon: "/images/shapes/cushion.svg" },
+  { name: "Round", description: "Maximum light return", icon: "/images/shapes/round.svg" },
+  { name: "Emerald", description: "Step cut, clarity on display", icon: "/images/shapes/emerald.svg" },
+  { name: "Pear", description: "A drop of light, with direction", icon: "/images/shapes/pear.svg" },
+  { name: "Heart", description: "A romantic, symmetrical silhouette", icon: "/images/shapes/heart.svg" },
+  { name: "Cabochon", description: "Domed for stars and sheen", icon: "/images/shapes/cabochon.svg" },
 ];
 
 export const gemVarieties = [

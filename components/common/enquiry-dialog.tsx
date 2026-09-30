@@ -70,7 +70,7 @@ export function EnquiryDialog({
         {submitted ? (
           <div className="flex flex-col items-center gap-3 py-6 text-center">
             <CheckCircle2 className="size-12 text-brand-green" strokeWidth={1.25} />
-            <p className="font-display text-h3 text-brand-ink">Thank you</p>
+            <p className="font-display type-h3 text-brand-ink">Thank you</p>
             <p className="text-base text-stone">
               We&apos;ve received your enquiry
               {gemstoneName ? ` about the ${gemstoneName}` : ""}. Our team will
@@ -83,7 +83,7 @@ export function EnquiryDialog({
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle className="font-display text-h3 font-medium text-brand-ink">{title}</DialogTitle>
+              <DialogTitle className="font-display type-h3 font-medium text-brand-ink">{title}</DialogTitle>
               <DialogDescription className="text-base text-stone">{description}</DialogDescription>
             </DialogHeader>
             <form

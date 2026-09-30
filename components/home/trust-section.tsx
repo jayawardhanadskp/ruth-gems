@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/reveal";
+import { Parallax } from "@/components/motion/parallax";
 
 const cards = [
   {
@@ -22,57 +23,60 @@ const cards = [
 
 export function TrustSection() {
   return (
-    <section className="container-page flex flex-col items-center gap-14 py-16 sm:py-20">
-      <Reveal className="flex max-w-2xl flex-col items-center gap-6 text-center">
-        <p className="text-sm font-medium tracking-[1px] text-brand-ink uppercase sm:text-base">
-          Trust & transparency
-        </p>
-        <h2 className="font-display text-4xl font-semibold leading-tight text-brand-ink sm:text-5xl">
-          Everything we know about a stone, you know too
-        </h2>
-      </Reveal>
-
-      <div className="relative mx-auto flex w-full max-w-[1090px] flex-col gap-4 lg:block lg:h-[610px]">
-        <Reveal className="relative order-first mx-auto h-[300px] w-[270px] overflow-hidden sm:h-[420px] sm:w-[378px] lg:absolute lg:top-[22px] lg:left-1/2 lg:h-[553px] lg:w-[498px] lg:-translate-x-1/2">
-          <Image
-            src="/images/home/trust-figma.png"
-            alt="Two Ceylon gem traders examining stones"
-            width={1376}
-            height={768}
-            sizes="(max-width: 1024px) 60vw, 500px"
-            className="absolute top-0 left-0 h-full w-[199%] max-w-none"
-          />
+    <section className="section-y">
+      <div className="container-page flex flex-col gap-14">
+        <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+          <p className="eyebrow flex items-center gap-3">
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
+            Trust &amp; transparency
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
+          </p>
+          <h2 className="font-display type-h2 font-medium text-balance text-brand-ink">
+            Everything we know about a stone, you know too
+          </h2>
         </Reveal>
-        {cards.map((card, i) => (
-          <StaggerGrid
-            key={card.title}
-            className={
-              "lg:absolute lg:w-[31.5%] " +
-              ["lg:top-0 lg:left-0", "lg:top-0 lg:right-0", "lg:bottom-0 lg:left-0", "lg:right-0 lg:bottom-0"][i]
-            }
-          >
-            <StaggerItem>
-              <TrustCard {...card} />
-            </StaggerItem>
-          </StaggerGrid>
-        ))}
-      </div>
 
-      <Reveal className="max-w-xl text-center text-lg text-gray-500">
-        The gem trade has survived on reputation for two thousand years. We
-        would rather lose a sale than a name.
-      </Reveal>
+        <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
+          <Reveal className="lg:col-span-5">
+            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-3xl bg-sand shadow-lg ring-1 ring-brand-ink/5 sm:min-h-[28rem]">
+              <Parallax className="absolute -inset-y-6 inset-x-0" distance={22}>
+                <Image
+                  src="/images/home/trust-figma.png"
+                  alt="Two Ceylon gem traders examining stones"
+                  width={1376}
+                  height={768}
+                  sizes="(max-width: 1024px) 180vw, 80vw"
+                  className="absolute top-0 left-0 h-full w-[199%] max-w-none object-cover object-left"
+                />
+              </Parallax>
+            </div>
+          </Reveal>
+          <StaggerGrid className="grid gap-4 sm:grid-cols-2 lg:col-span-7 lg:gap-5">
+            {cards.map((card, i) => (
+              <StaggerItem key={card.title} className="h-full">
+                <TrustCard {...card} index={i + 1} />
+              </StaggerItem>
+            ))}
+          </StaggerGrid>
+        </div>
+
+        <Reveal className="mx-auto max-w-xl text-center font-display type-h3 font-medium text-balance text-ink-soft italic">
+          The gem trade has survived on reputation for two thousand years. We
+          would rather lose a sale than a name.
+        </Reveal>
+      </div>
     </section>
   );
 }
 
-function TrustCard({ title, body }: { title: string; body: string }) {
+function TrustCard({ title, body, index }: { title: string; body: string; index: number }) {
   return (
-    <div className="flex h-full flex-col gap-3 rounded-lg bg-[#f3ede2] p-6 lg:min-h-[200px] lg:justify-center">
-      <p className="font-display text-xl font-semibold text-brand-ink">
-        {title}
-      </p>
-      <p className="text-sm leading-relaxed text-gray-500">{body}</p>
+    <div className="surface flex h-full flex-col gap-4 rounded-2xl bg-ivory p-7 sm:p-8">
+      <span className="font-display text-3xl font-medium text-brand-gold-muted tabular-nums">
+        0{index}
+      </span>
+      <p className="font-display text-2xl leading-tight font-semibold text-brand-ink">{title}</p>
+      <p className="text-[0.9375rem] leading-relaxed text-stone">{body}</p>
     </div>
   );
 }

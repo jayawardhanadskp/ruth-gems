@@ -37,28 +37,30 @@ const faqs = [
 
 export function FaqAccordion() {
   return (
-    <section className="container-page flex flex-col items-center gap-10 py-16 sm:py-20">
-      <Reveal>
-        <SectionHeading eyebrow="FAQ" title="Frequently Asked Questions" align="center" />
-      </Reveal>
-      <Reveal className="w-full max-w-3xl">
-        <Accordion className="flex flex-col gap-4">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={faq.question}
-              value={`faq-${i}`}
-              className="rounded-lg border border-[#dadada] px-6 py-1"
-            >
-              <AccordionTrigger className="py-5! font-display text-xl text-brand-ink sm:text-2xl">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-base! leading-relaxed text-[#313131]">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </Reveal>
+    <section className="section-y">
+      <div className="container-narrow flex flex-col items-center gap-12">
+        <Reveal>
+          <SectionHeading eyebrow="FAQ" title="Frequently Asked Questions" align="center" />
+        </Reveal>
+        <Reveal className="w-full">
+          <Accordion className="flex flex-col gap-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={faq.question}
+                value={`faq-${i}`}
+                className="surface rounded-2xl px-6 transition-shadow duration-[var(--duration-enter)] data-[open]:shadow-md sm:px-8"
+              >
+                <AccordionTrigger className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 text-base leading-relaxed text-ink-soft">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
+      </div>
     </section>
   );
 }

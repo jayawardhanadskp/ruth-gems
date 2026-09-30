@@ -37,7 +37,7 @@ export function SectionHeading({
       </p>
       <h2
         className={cn(
-          "font-display text-h2 font-medium text-balance",
+          "font-display type-h2 font-medium text-balance",
           tone === "dark" ? "text-brand-cream" : "text-brand-ink"
         )}
       >

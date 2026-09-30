@@ -2,61 +2,87 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { EnquiryDialog } from "@/components/common/enquiry-dialog";
+import { Parallax } from "@/components/motion/parallax";
+import { easeOut } from "@/components/motion/reveal";
 
 export function Hero() {
+  const reduce = useReducedMotion();
+  const container: Variants = {
+    hidden: {},
+    show: { transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.15 } },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 22 },
+    show: { opacity: 1, y: 0, transition: { duration: reduce ? 0.2 : 0.8, ease: easeOut } },
+  };
+
   return (
-    <section className="relative h-[520px] w-full overflow-hidden sm:h-[600px] lg:h-[720px]">
-      <Image
-        src="/images/home/hero.png"
-        alt="Ceylon gemstone artisans"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+    <section
+      data-tone="dark"
+      className="relative isolate flex min-h-[34rem] items-end overflow-hidden bg-brand-forest-dark pb-14 sm:pb-20 lg:min-h-[44rem] lg:items-center lg:pb-0"
+    >
+      <motion.div
+        aria-hidden
+        className="absolute inset-0 -z-20"
+        initial={{ scale: reduce ? 1 : 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.8, ease: easeOut }}
+      >
+        <Parallax className="absolute -inset-y-10 inset-x-0" distance={36}>
+          <Image
+            src="/images/home/hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </Parallax>
+      </motion.div>
+      <div className="scrim-hero absolute inset-0 -z-10" />
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="container-page relative z-10 flex h-full flex-col justify-center gap-6"
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="container-page relative flex flex-col items-start gap-6 pt-28 lg:pt-0"
       >
-        <h1 className="font-display text-4xl font-medium leading-tight text-brand-cream sm:text-5xl lg:text-[70px] lg:leading-[1.05]">
+        <motion.p variants={item} className="eyebrow flex items-center gap-3">
+          <span aria-hidden className="h-px w-8 bg-brand-gold" />
+          Ratnapura · Sri Lanka
+        </motion.p>
+        <motion.h1
+          variants={item}
+          className="max-w-[16ch] font-display type-display font-medium text-balance text-brand-cream"
+        >
           A Legacy of Ceylon&apos;s Finest Gemstones.
-        </h1>
-        <p className="max-w-md text-base leading-relaxed text-gray-300">
+        </motion.h1>
+        <motion.p
+          variants={item}
+          className="max-w-lg text-base leading-relaxed text-brand-cream/90 sm:text-lg"
+        >
           Discover the captivating colours, natural beauty and timeless
           character of Ceylon gemstones. Explore a collection where every
           stone has its own story to tell.
-        </p>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-wrap items-center gap-4">
-            <Button
-              nativeButton={false}
-              render={<Link href="/collection" />}
-              className="h-11 rounded-lg border-0 bg-brand-green-light px-[17px] text-base font-medium text-white hover:bg-brand-green-light/90"
-            >
-              Browse Gemstones
-            </Button>
-            <EnquiryDialog
-              trigger={
-                <Button
-                  variant="outline"
-                  className="h-11 rounded-lg border-2 border-white bg-transparent px-[17px] text-base font-medium text-white hover:bg-white/10 hover:text-white"
-                >
-                  Arrange a Viewing
-                </Button>
-              }
-            />
-          </div>
-          <p className="text-sm font-medium text-[#fff5e0]">
-            No cart, no checkout. Every gemstone is sold by conversation.
-          </p>
-        </div>
+        </motion.p>
+        <motion.div variants={item} className="flex flex-wrap items-center gap-3">
+          <Button nativeButton={false} size="lg" variant="gold" render={<Link href="/collection" />}>
+            Browse Gemstones
+          </Button>
+          <EnquiryDialog
+            trigger={
+              <Button size="lg" variant="outline-light">
+                Arrange a Viewing
+              </Button>
+            }
+          />
+        </motion.div>
+        <motion.p variants={item} className="text-sm font-medium text-[#fff0d2]">
+          No cart, no checkout. Every gemstone is sold by conversation.
+        </motion.p>
       </motion.div>
     </section>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/common/section-heading";
-import { ScrollArrows } from "@/components/common/scroll-arrows";
-import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/reveal";
+import { Carousel } from "@/components/common/carousel";
+import { Reveal } from "@/components/motion/reveal";
 
 const images = [
   "/images/home/gift-1.png",
@@ -11,31 +11,34 @@ const images = [
 
 export function GiftBanner() {
   return (
-    <section className="bg-[#f5faf9] py-16 sm:py-20">
-      <div className="container-page flex flex-col gap-8">
-        <Reveal className="flex items-end justify-between gap-6">
-          <SectionHeading
-            eyebrow="A Gift from Ceylon"
-            title="Give the Gift of a Ceylon Sapphire"
-          />
-          <ScrollArrows targetId="gift-track" className="shrink-0" />
-        </Reveal>
-        <StaggerGrid id="gift-track" className="flex snap-x gap-4 overflow-x-auto [&>*]:w-full [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-[calc(33.333%-11px)]">
-          {images.map((src) => (
-            <StaggerItem key={src}>
-              <div className="relative h-[280px] w-full overflow-hidden rounded-lg sm:h-[358px]">
-                <Image
-                  src={src}
-                  alt="A gift of Ceylon sapphire"
-                  fill
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </StaggerItem>
+    <section className="section-y bg-sand/60">
+      <Reveal className="container-page">
+        <Carousel
+          label="Gift inspiration"
+          heading={
+            <SectionHeading
+              eyebrow="A Gift from Ceylon"
+              title="Give the Gift of a Ceylon Sapphire"
+            />
+          }
+          slideClassName="basis-[86%] sm:basis-1/2 lg:basis-1/3"
+          slides={images.map((src) => (
+            <div
+              key={src}
+              className="group relative aspect-[16/11] w-full overflow-hidden rounded-2xl bg-sand shadow-md"
+            >
+              <Image
+                src={src}
+                alt="A gift of Ceylon sapphire"
+                fill
+                sizes="(max-width: 640px) 86vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out)] [@media(hover:hover)]:group-hover:scale-[1.04]"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-brand-ink/5" />
+            </div>
           ))}
-        </StaggerGrid>
-      </div>
+        />
+      </Reveal>
     </section>
   );
 }

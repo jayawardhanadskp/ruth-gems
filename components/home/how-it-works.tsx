@@ -26,58 +26,35 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="container-page relative flex flex-col items-center gap-10 py-16 sm:py-20">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/decor/ruby.svg"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute left-[4%] top-[14%] hidden w-[5.5%] max-w-[100px] lg:block"
-      />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/decor/vector.svg"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute bottom-[8%] left-[21%] hidden w-[5%] max-w-[90px] lg:block"
-      />
-      <Reveal>
-        <SectionHeading
-          eyebrow="How it works"
-          title="From a photograph to a handshake"
-          align="center"
-        />
-      </Reveal>
-      <StaggerGrid className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step) => (
-          <StaggerItem key={step.number}>
-            <div className="relative flex h-full flex-col items-center gap-6 rounded-lg border-4 border-white bg-[#f4f4f4] p-6 text-center">
-              {step.number === "04" && (
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -bottom-[19%] -left-[300%] -right-[12.8%] -top-[24%] -z-10 hidden lg:block"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/decor/step-arrow.svg"
-                    alt=""
-                    className="size-full max-w-none"
-                  />
-                </div>
-              )}
-              <p className="font-display text-4xl font-semibold text-[#a9873f]">
-                {step.number}
-              </p>
-              <div className="flex flex-col gap-3">
-                <p className="font-display text-2xl text-brand-ink">
+    <section className="section-y bg-ivory">
+      <div className="container-page flex flex-col items-center gap-14">
+        <Reveal>
+          <SectionHeading
+            eyebrow="How it works"
+            title="From a photograph to a handshake"
+            align="center"
+          />
+        </Reveal>
+        <StaggerGrid className="relative grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div
+            aria-hidden
+            className="rule-gem pointer-events-none absolute top-[3.25rem] right-[10%] left-[10%] hidden lg:block"
+          />
+          {steps.map((step) => (
+            <StaggerItem key={step.number} className="h-full">
+              <div className="relative flex h-full flex-col items-center gap-5 rounded-2xl border border-line bg-background p-8 text-center shadow-xs">
+                <span className="flex size-14 items-center justify-center rounded-full border border-brand-gold/50 bg-ivory font-display text-2xl font-semibold text-brand-gold-muted">
+                  {step.number}
+                </span>
+                <p className="font-display text-2xl font-semibold text-brand-ink">
                   {step.title}
                 </p>
-                <p className="text-base text-[#5c5347]">{step.body}</p>
+                <p className="text-[0.9375rem] leading-relaxed text-stone">{step.body}</p>
               </div>
-            </div>
-          </StaggerItem>
-        ))}
-      </StaggerGrid>
+            </StaggerItem>
+          ))}
+        </StaggerGrid>
+      </div>
     </section>
   );
 }

@@ -25,7 +25,7 @@ export function CtaBanner({
       <Reveal className="container-page flex flex-col items-start gap-10 py-section-sm lg:flex-row lg:items-center lg:justify-between">
         <div className="flex max-w-xl flex-col gap-5">
           <p className="eyebrow">Private viewings</p>
-          <h2 className="font-display text-h2 font-medium whitespace-pre-line text-brand-cream">
+          <h2 className="font-display type-h2 font-medium whitespace-pre-line text-brand-cream">
             {heading}
           </h2>
           <p className="text-base leading-relaxed text-brand-cream/85 sm:text-lg">
