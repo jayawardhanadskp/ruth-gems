@@ -13,46 +13,41 @@ export function CtaBanner({
   description = "Discover your preferred gemstone up close and connect with our team for a personalised viewing experience.",
 }: CtaBannerProps) {
   return (
-    <section className="relative overflow-hidden">
+    <section data-tone="dark" className="relative isolate overflow-hidden bg-brand-forest-dark">
       <Image
         src="/images/shared/cta-banner-texture.png"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover"
+        className="-z-10 object-cover"
       />
-      <div className="absolute inset-0 bg-black/50" />
-      <Reveal className="container-page relative flex flex-col items-start gap-8 py-16 sm:py-20 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex max-w-lg flex-col gap-4">
-          <h2 className="font-display text-3xl font-semibold whitespace-pre-line text-white sm:text-4xl">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-forest-dark/90 via-brand-forest-dark/70 to-brand-forest-dark/50" />
+      <Reveal className="container-page flex flex-col items-start gap-10 py-section-sm lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex max-w-xl flex-col gap-5">
+          <p className="eyebrow">Private viewings</p>
+          <h2 className="font-display text-h2 font-medium whitespace-pre-line text-brand-cream">
             {heading}
           </h2>
-          <p className="text-[15px] leading-relaxed text-white/90">
+          <p className="text-base leading-relaxed text-brand-cream/85 sm:text-lg">
             {description}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3">
           <Button
             nativeButton={false}
+            size="lg"
+            variant="gold"
             render={
-              <a
-                href="https://wa.me/94770000000"
-                target="_blank"
-                rel="noreferrer"
-              />
+              <a href="https://wa.me/94770000000" target="_blank" rel="noreferrer" />
             }
-            className="flex h-[60px] items-center gap-2 rounded-lg border border-brand-green bg-brand-green px-6 text-base font-medium text-brand-cream hover:bg-brand-green/90 sm:w-[220px]"
           >
-            <Image src="/images/icons/whatsapp.svg" alt="" width={24} height={24} />
+            <Image src="/images/icons/whatsapp.svg" alt="" width={20} height={20} />
             WhatsApp Us
           </Button>
           <EnquiryDialog
             trigger={
-              <Button
-                variant="outline"
-                className="flex h-[60px] items-center gap-2 rounded-lg border border-white bg-transparent px-6 text-base font-medium text-white hover:bg-white/10 hover:text-white"
-              >
-                <Image src="/images/icons/phone.svg" alt="" width={24} height={24} />
+              <Button size="lg" variant="outline-light">
+                <Image src="/images/icons/phone.svg" alt="" width={20} height={20} />
                 Call
               </Button>
             }

@@ -66,62 +66,63 @@ export function EnquiryDialog({
       }}
     >
       <DialogTrigger render={trigger} />
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-lg">
         {submitted ? (
           <div className="flex flex-col items-center gap-3 py-6 text-center">
-            <CheckCircle2 className="size-10 text-brand-green" />
-            <p className="font-display text-2xl text-foreground">Thank you</p>
-            <p className="text-sm text-muted-foreground">
+            <CheckCircle2 className="size-12 text-brand-green" strokeWidth={1.25} />
+            <p className="font-display text-h3 text-brand-ink">Thank you</p>
+            <p className="text-base text-stone">
               We&apos;ve received your enquiry
               {gemstoneName ? ` about the ${gemstoneName}` : ""}. Our team will
               be in touch within one business day.
             </p>
-            <Button className="mt-2" onClick={() => setOpen(false)}>
+            <Button className="mt-4" onClick={() => setOpen(false)}>
               Close
             </Button>
           </div>
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle className="font-display text-2xl">{title}</DialogTitle>
-              <DialogDescription>{description}</DialogDescription>
+              <DialogTitle className="font-display text-h3 font-medium text-brand-ink">{title}</DialogTitle>
+              <DialogDescription className="text-base text-stone">{description}</DialogDescription>
             </DialogHeader>
             <form
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-5"
+              noValidate
               onSubmit={handleSubmit(onSubmit)}
             >
               {gemstoneRef && (
-                <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase">
+                <p className="eyebrow">
                   Reference: {gemstoneRef}
                 </p>
               )}
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="name">Full name</Label>
-                <Input id="name" placeholder="Your name" {...register("name")} />
+                <Input id="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Your name" {...register("name")} />
                 {errors.name && (
-                  <p className="text-xs text-destructive">{errors.name.message}</p>
+                  <p id="name-error" role="alert" className="text-sm text-destructive">{errors.name.message}</p>
                 )}
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
+                  id="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined}
                   type="email"
                   placeholder="you@example.com"
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-xs text-destructive">{errors.email.message}</p>
+                  <p id="email-error" role="alert" className="text-sm text-destructive">{errors.email.message}</p>
                 )}
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="phone">Phone / WhatsApp</Label>
-                <Input id="phone" placeholder="+94 7X XXX XXXX" {...register("phone")} />
+                <Input id="phone" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} placeholder="+94 7X XXX XXXX" {...register("phone")} />
                 {errors.phone && (
-                  <p className="text-xs text-destructive">{errors.phone.message}</p>
+                  <p id="phone-error" role="alert" className="text-sm text-destructive">{errors.phone.message}</p>
                 )}
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="message">Message (optional)</Label>
                 <Textarea
                   id="message"
@@ -133,7 +134,7 @@ export function EnquiryDialog({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 h-11 rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90"
+                size="lg" className="mt-2 w-full"
               >
                 {isSubmitting ? "Sending…" : "Send Enquiry"}
               </Button>

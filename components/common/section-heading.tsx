@@ -6,7 +6,7 @@ interface SectionHeadingProps {
   description?: string;
   align?: "left" | "center";
   tone?: "light" | "dark";
-  /** "default" matches the Home-page eyebrow style (green, 16px, medium); "muted" matches the About-page style (muted gold, 12px, semibold, wider tracking). */
+  /** @deprecated kept so existing call sites compile; every heading now shares one style. */
   variant?: "default" | "muted";
   className?: string;
 }
@@ -17,33 +17,28 @@ export function SectionHeading({
   description,
   align = "left",
   tone = "light",
-  variant = "default",
   className,
 }: SectionHeadingProps) {
   return (
     <div
+      data-tone={tone === "dark" ? "dark" : undefined}
       className={cn(
-        "flex flex-col gap-3",
+        "flex flex-col gap-4",
         align === "center" && "items-center text-center",
         className
       )}
     >
-      <p
-        className={cn(
-          "uppercase",
-          variant === "muted"
-            ? "text-xs font-semibold tracking-[2.16px] text-brand-gold-muted"
-            : "text-sm font-medium tracking-[1px] sm:text-base",
-          variant === "default" &&
-            (tone === "dark" ? "text-brand-gold" : "text-brand-green")
-        )}
-      >
+      <p className="eyebrow flex items-center gap-3">
+        <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
         {eyebrow}
+        {align === "center" && (
+          <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
+        )}
       </p>
       <h2
         className={cn(
-          "font-display text-4xl font-medium leading-tight sm:text-5xl",
-          tone === "dark" ? "text-white" : "text-foreground"
+          "font-display text-h2 font-medium text-balance",
+          tone === "dark" ? "text-brand-cream" : "text-brand-ink"
         )}
       >
         {title}
@@ -51,8 +46,8 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            "max-w-2xl text-base leading-relaxed",
-            tone === "dark" ? "text-white/70" : "text-muted-foreground",
+            "max-w-2xl text-base leading-relaxed text-pretty sm:text-lg",
+            tone === "dark" ? "text-brand-cream/80" : "text-stone",
             align === "center" && "mx-auto"
           )}
         >

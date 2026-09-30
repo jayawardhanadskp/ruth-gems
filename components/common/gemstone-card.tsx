@@ -1,61 +1,56 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { SaveButton } from "@/components/common/save-button";
 import { StatusPill } from "@/components/common/status-pill";
 import { formatCarat, formatLkr } from "@/lib/format";
 import type { Gemstone } from "@/types/gemstone";
 
 export function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
   return (
-    <div className="group relative flex h-full flex-col gap-2.5 rounded-lg bg-white p-2.5 transition-shadow hover:shadow-lg">
-      <div className="relative h-[220px] w-full overflow-hidden rounded-lg sm:h-[260px] lg:h-[294px]">
+    <article className="group surface relative flex h-full flex-col rounded-2xl p-2 transition-[transform,box-shadow] duration-[var(--duration-enter)] ease-[var(--ease-out)] focus-within:shadow-md active:scale-[0.99] [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-lg">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-sand">
         <Image
           src={gemstone.images[0]}
-          alt={gemstone.name}
+          alt={`${gemstone.name}, ${gemstone.colour} ${gemstone.cut}`}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 26vw"
+          className="object-cover transition-transform duration-[700ms] ease-[var(--ease-out)] [@media(hover:hover)]:group-hover:scale-[1.04]"
         />
+        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-brand-ink/5" />
         <div className="absolute top-3 left-3">
           <StatusPill status={gemstone.status} />
         </div>
-        <button
-          type="button"
-          aria-label="Save gemstone"
-          className="absolute top-3 right-3 z-10 flex size-7 items-center justify-center rounded-full bg-brand-cream/90 text-brand-ink transition-colors hover:bg-brand-cream"
-        >
-          <Heart className="size-3.5" />
-        </button>
-      </div>
-      <div className="flex flex-col gap-2.5 px-1 pb-1">
-        <p className="text-xs tracking-[0.15em] text-[#a1937c]">
-          {gemstone.referenceNo}
-        </p>
-        <Link
-          href={`/collection/${gemstone.slug}`}
-          className="after:absolute after:inset-0 after:z-0 after:content-[''] hover:underline"
-        >
-          <h3 className="font-display text-xl font-semibold text-brand-ink">
-            {gemstone.name}
-          </h3>
-        </Link>
-        <p className="text-sm text-[#7c7160]">
-          {formatCarat(gemstone.caratWeight)} · {gemstone.cut} ·{" "}
-          {gemstone.colour}
-        </p>
-        <div className="h-px w-full bg-border" />
-        <div className="flex items-center justify-between">
-          <p className="font-display text-xl font-bold text-[#16325c]">
-            {formatLkr(gemstone.priceLkr)}
-          </p>
-          <Link
-            href={`/collection/${gemstone.slug}`}
-            className="text-sm font-semibold text-[#a5854a] hover:text-brand-gold-muted"
-          >
-            View
-          </Link>
+        <div className="absolute top-1.5 right-1.5">
+          <SaveButton label={gemstone.name} />
         </div>
       </div>
-    </div>
+      <div className="flex flex-1 flex-col gap-2 px-3 pt-4 pb-3">
+        <p className="eyebrow text-stone!">{gemstone.referenceNo}</p>
+        <h3 className="font-display text-2xl leading-tight font-semibold text-brand-ink">
+          <Link
+            href={`/collection/${gemstone.slug}`}
+            className="rounded-sm outline-none after:absolute after:inset-0 after:z-0 after:content-[''] focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-ring focus-visible:after:rounded-2xl"
+          >
+            {gemstone.name}
+          </Link>
+        </h3>
+        <p className="text-sm text-stone">
+          {formatCarat(gemstone.caratWeight)} · {gemstone.cut} · {gemstone.colour}
+        </p>
+        <div className="mt-auto flex items-center justify-between border-t border-line pt-4">
+          <p className="font-display text-2xl font-semibold text-brand-forest">
+            {formatLkr(gemstone.priceLkr)}
+          </p>
+          <span
+            aria-hidden
+            className="flex min-h-11 items-center gap-1.5 text-sm font-semibold text-brand-gold-muted transition-colors group-hover:text-brand-green"
+          >
+            View
+            <ArrowRight className="size-4 transition-transform duration-[var(--duration-enter)] ease-[var(--ease-out)] group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </article>
   );
 }

@@ -2,27 +2,24 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/*
+ * Ruth Gems design tokens
+ * Layer 1  primitives   raw brand values (colours, scales)
+ * Layer 2  semantic     what a value is for (--background, --border, --text-h1)
+ * Layer 3  component    kept next to the component, built from layer 2
+ *
+ * Light theme only. The shadcn `.dark` palette was never wired up and a single
+ * warm theme suits the brand, so it has been removed.
+ */
 
 @theme inline {
+  /* ---------- fonts ---------- */
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+
+  /* ---------- semantic colours (shadcn contract) ---------- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-display);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -39,15 +36,19 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Ruth Gems brand tokens (pulled from Figma) */
+  /* ---------- radius scale (base = --radius) ---------- */
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.33);
+  --radius-2xl: calc(var(--radius) * 1.66);
+  --radius-3xl: calc(var(--radius) * 2.33);
+  --radius-4xl: calc(var(--radius) * 3);
+}
+
+@theme {
+  /* ---------- brand primitives ---------- */
   --color-brand-forest: #0d2f24;
   --color-brand-forest-dark: #022117;
   --color-brand-green: #28604b;
@@ -56,12 +57,56 @@
   --color-brand-gold-muted: #8d6f31;
   --color-brand-cream: #fffdf9;
   --color-brand-ink: #1a1614;
+
+  /* warm neutrals derived from the cream/ink pair */
+  --color-ivory: #faf6ee;
+  --color-sand: #f3ecdf;
+  --color-line: #e6dcc9;
+  --color-stone: #6f6454;
+  --color-ink-soft: #4d453b;
+  --color-mist: #d1d8d3;
+
   --color-status-available: #1f7a4d;
-  --color-status-reserved: #a2732b;
+  --color-status-reserved: #8d6f31;
+
+  /* ---------- fluid type scale (capped at the 1440 design width) ---------- */
+  --text-display: clamp(2.5rem, 1.9rem + 3vw, 4.5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.015em;
+  --text-h1: clamp(2.25rem, 1.75rem + 2.4vw, 3.75rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.012em;
+  --text-h2: clamp(1.875rem, 1.5rem + 1.6vw, 2.875rem);
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.008em;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --text-h3--line-height: 1.2;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.65;
+
+  /* ---------- spacing: section rhythm + gutters ---------- */
+  --spacing-gutter: clamp(1rem, 0.4rem + 2.6vw, 4.5rem);
+  --spacing-section: clamp(4rem, 2.6rem + 5vw, 8rem);
+  --spacing-section-sm: clamp(3rem, 2rem + 3.4vw, 5.5rem);
+  --spacing-stack: clamp(2rem, 1.4rem + 2vw, 3.5rem);
+
+  /* ---------- layered warm shadows ---------- */
+  --shadow-xs: 0 1px 2px rgb(61 42 16 / 0.06);
+  --shadow-sm: 0 1px 2px rgb(61 42 16 / 0.05), 0 2px 6px rgb(61 42 16 / 0.05);
+  --shadow-md: 0 2px 4px rgb(61 42 16 / 0.04), 0 8px 20px -4px rgb(61 42 16 / 0.09);
+  --shadow-lg: 0 2px 4px rgb(61 42 16 / 0.04), 0 12px 28px -6px rgb(61 42 16 / 0.12),
+    0 32px 56px -24px rgb(61 42 16 / 0.14);
+  --shadow-xl: 0 4px 8px rgb(61 42 16 / 0.05), 0 24px 48px -12px rgb(61 42 16 / 0.18),
+    0 48px 96px -32px rgb(61 42 16 / 0.2);
+
+  /* ---------- motion ---------- */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 :root {
-  --background: #ffffff;
+  --background: #fffdf9;
   --foreground: #1a1614;
   --card: #ffffff;
   --card-foreground: #1a1614;
@@ -69,90 +114,182 @@
   --popover-foreground: #1a1614;
   --primary: #28604b;
   --primary-foreground: #fffdf9;
-  --secondary: #f5f1ea;
+  --secondary: #f3ecdf;
   --secondary-foreground: #1a1614;
-  --muted: #f5f1ea;
-  --muted-foreground: #6b6055;
+  --muted: #f7f1e6;
+  --muted-foreground: #6f6454;
   --accent: #bd8f58;
   --accent-foreground: #1a1614;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: #e5e7eb;
-  --input: #e5e7eb;
+  --destructive: #b3261e;
+  --border: #e6dcc9;
+  --input: #d9ceb9;
   --ring: #28604b;
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
   --radius: 0.75rem;
-  --sidebar: #fffdf9;
-  --sidebar-foreground: #1a1614;
-  --sidebar-primary: #28604b;
-  --sidebar-primary-foreground: #fffdf9;
-  --sidebar-accent: #f5f1ea;
-  --sidebar-accent-foreground: #1a1614;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #28604b;
-}
 
-.dark {
-  --background: #022117;
-  --foreground: #fffdf9;
-  --card: #0d2f24;
-  --card-foreground: #fffdf9;
-  --popover: #0d2f24;
-  --popover-foreground: #fffdf9;
-  --primary: #bd8f58;
-  --primary-foreground: #1a1614;
-  --secondary: #0d2f24;
-  --secondary-foreground: #fffdf9;
-  --muted: #0d2f24;
-  --muted-foreground: #d2d6ce;
-  --accent: #0d2f24;
-  --accent-foreground: #fffdf9;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: #bd8f58;
-  --sidebar: #022117;
-  --sidebar-foreground: #fffdf9;
-  --sidebar-primary: #bd8f58;
-  --sidebar-primary-foreground: #1a1614;
-  --sidebar-accent: #0d2f24;
-  --sidebar-accent-foreground: #fffdf9;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #bd8f58;
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-enter: 320ms;
+  --duration-drawer: 420ms;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+    @apply border-border;
   }
   html {
     @apply font-sans;
-    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand-gold) 35%, transparent);
+  }
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  /* One visible focus ring for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+  [data-tone="dark"] :focus-visible,
+  [data-tone="dark"]:focus-visible {
+    outline-color: var(--color-brand-gold);
+  }
+  /* Form controls draw their own ring via border + box-shadow. */
+  input:focus-visible,
+  textarea:focus-visible,
+  [role="combobox"]:focus-visible {
+    outline: none;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-feature-settings: "dlig" 1;
     font-family: var(--font-display);
+    font-feature-settings: "dlig" 1;
   }
 
+  /* small-caps label */
   .eyebrow {
-    @apply text-[12px] font-semibold uppercase tracking-[0.18em] text-brand-gold;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brand-gold-muted);
+  }
+  [data-tone="dark"] .eyebrow {
+    color: var(--color-brand-gold);
   }
 
+  /* one container width + gutter for the whole site */
   .container-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10 xl:px-20;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 90rem;
+    padding-inline: var(--spacing-gutter);
+  }
+  .container-narrow {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 62rem;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  /* one vertical rhythm */
+  .section-y {
+    padding-block: var(--spacing-section);
+  }
+  .section-y-sm {
+    padding-block: var(--spacing-section-sm);
+  }
+
+  /* Shared surface: cards, tiles, panels all start here. */
+  .surface {
+    background: var(--card);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xs);
+  }
+
+  /* Hairline with a gem-gold centre, used as a divider. */
+  .rule-gem {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-line) 15%,
+      var(--color-brand-gold) 50%,
+      var(--color-line) 85%,
+      transparent
+    );
+  }
+
+  /* Scrim for text over photography. */
+  .scrim-hero {
+    background:
+      linear-gradient(180deg, rgb(2 33 23 / 0.55) 0%, rgb(2 33 23 / 0.25) 38%, rgb(2 33 23 / 0.78) 100%),
+      linear-gradient(90deg, rgb(2 33 23 / 0.6) 0%, transparent 70%);
+  }
+
+  /* Horizontal scroller that snaps; hides the bar, keeps swipe. */
+  .scroll-snap-x {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-snap-x::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-snap-x > * {
+    scroll-snap-align: start;
   }
 }
 
 @keyframes photo-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
