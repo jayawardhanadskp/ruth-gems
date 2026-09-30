@@ -7,7 +7,7 @@ import { categories } from "@/lib/data";
 export function CategoryChips() {
   return (
     <section className="section-y">
-      <div className="container-page flex flex-col items-center gap-12">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-12">
         <Reveal>
           <SectionHeading
             eyebrow="Collection"

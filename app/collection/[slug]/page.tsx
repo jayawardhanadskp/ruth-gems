@@ -172,7 +172,7 @@ export default async function GemstoneDetailPage({
           <p className="type-lead max-w-2xl text-mist">
             Arrange a private viewing, or request full details, certification and video of this stone. We reply personally within one business day.
           </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-3">
+          <div className="mt-3 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row max-sm:[&>*]:w-full">
             <EnquiryDialog
               gemstoneRef={gemstone.referenceNo}
               gemstoneName={gemstone.name}

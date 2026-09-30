@@ -6,7 +6,7 @@ export function StatusPill({ status }: { status: GemStatus }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-brand-cream/95 px-3 py-1.5 text-[0.6875rem] font-semibold tracking-[0.08em] uppercase shadow-xs ring-1 ring-brand-ink/5",
+        "inline-flex items-center gap-1.5 rounded-full bg-brand-cream/95 px-2.5 py-1 sm:gap-2 sm:px-3 sm:py-1.5 text-[0.6875rem] font-semibold tracking-[0.08em] uppercase shadow-xs ring-1 ring-brand-ink/5",
         isAvailable ? "text-status-available" : "text-status-reserved"
       )}
     >

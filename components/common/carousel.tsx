@@ -60,7 +60,7 @@ export function Carousel({
     "flex size-11 cursor-pointer items-center justify-center rounded-full border border-brand-ink/20 text-brand-ink outline-none transition-[transform,background-color,border-color,color,opacity] duration-[var(--duration-press)] ease-out active:scale-95 disabled:cursor-default disabled:opacity-35 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [@media(hover:hover)]:enabled:hover:border-brand-green [@media(hover:hover)]:enabled:hover:bg-brand-green [@media(hover:hover)]:enabled:hover:text-brand-cream";
 
   return (
-    <div className={cn("flex flex-col gap-10", className)}>
+    <div className={cn("flex flex-col gap-6 sm:gap-10", className)}>
       {(heading || action || showControls) && (
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           {heading}

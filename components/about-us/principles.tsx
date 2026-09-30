@@ -26,7 +26,7 @@ const principles = [
 export function Principles() {
   return (
     <section className="section-y">
-      <div className="container-page flex flex-col items-center gap-14">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-14">
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <p className="eyebrow flex items-center gap-3">
             <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
@@ -41,7 +41,7 @@ export function Principles() {
         <StaggerGrid className="grid w-full gap-5 sm:grid-cols-2 lg:gap-6">
           {principles.map((p) => (
             <StaggerItem key={p.number} className="h-full">
-              <div className="surface flex h-full gap-5 rounded-2xl bg-ivory p-7 sm:p-8">
+              <div className="surface flex h-full gap-5 rounded-2xl bg-ivory p-5 sm:p-8">
                 <p className="font-display text-4xl leading-none font-medium text-brand-gold-muted tabular-nums">
                   {p.number}
                 </p>

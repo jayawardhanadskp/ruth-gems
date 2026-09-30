@@ -22,7 +22,7 @@ export function CtaBanner({
         className="-z-10 object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-forest-dark/90 via-brand-forest-dark/70 to-brand-forest-dark/50" />
-      <Reveal className="container-page flex flex-col items-start gap-10 py-section-sm lg:flex-row lg:items-center lg:justify-between">
+      <Reveal className="container-page flex flex-col items-start gap-6 py-section-sm sm:gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex max-w-xl flex-col gap-5">
           <p className="eyebrow">Private viewings</p>
           <h2 className="font-display type-h2 font-medium whitespace-pre-line text-brand-cream">
@@ -32,7 +32,7 @@ export function CtaBanner({
             {description}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center max-sm:[&>*]:w-full">
           <Button
             nativeButton={false}
             size="lg"

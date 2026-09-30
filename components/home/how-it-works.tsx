@@ -27,7 +27,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <section className="section-y bg-ivory">
-      <div className="container-page flex flex-col items-center gap-14">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-14">
         <Reveal>
           <SectionHeading
             eyebrow="How it works"
@@ -35,21 +35,23 @@ export function HowItWorks() {
             align="center"
           />
         </Reveal>
-        <StaggerGrid className="relative grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <StaggerGrid className="relative grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6">
           <div
             aria-hidden
             className="rule-gem pointer-events-none absolute top-[3.25rem] right-[10%] left-[10%] hidden lg:block"
           />
           {steps.map((step) => (
             <StaggerItem key={step.number} className="h-full">
-              <div className="relative flex h-full flex-col items-center gap-5 rounded-2xl border border-line bg-background p-8 text-center shadow-xs">
-                <span className="flex size-14 items-center justify-center rounded-full border border-brand-gold/50 bg-ivory font-display text-2xl font-semibold text-brand-gold-muted">
+              <div className="relative flex h-full items-start gap-4 rounded-2xl border border-line bg-background p-5 text-left shadow-xs sm:flex-col sm:items-center sm:gap-5 sm:p-8 sm:text-center">
+                <span className="flex size-11 shrink-0 items-center sm:size-14 justify-center rounded-full border border-brand-gold/50 bg-ivory font-display text-xl font-semibold text-brand-gold-muted sm:text-2xl">
                   {step.number}
                 </span>
-                <p className="font-display text-2xl font-semibold text-brand-ink">
-                  {step.title}
-                </p>
-                <p className="text-[0.9375rem] leading-relaxed text-stone">{step.body}</p>
+                <div className="flex flex-col gap-1.5 sm:gap-5">
+                  <p className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">
+                    {step.title}
+                  </p>
+                  <p className="text-[0.9375rem] leading-relaxed text-stone">{step.body}</p>
+                </div>
               </div>
             </StaggerItem>
           ))}

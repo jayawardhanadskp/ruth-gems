@@ -22,7 +22,7 @@ const badges = [
 export function TrustBadges() {
   return (
     <section className="section-y bg-ivory">
-      <div className="container-page flex flex-col items-center gap-14">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-14">
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <p className="eyebrow flex items-center gap-3">
             <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
@@ -36,7 +36,7 @@ export function TrustBadges() {
         <StaggerGrid className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
           {badges.map((badge) => (
             <StaggerItem key={badge.title} className="h-full">
-              <div className="surface flex h-full flex-col items-center gap-4 rounded-2xl bg-background p-8 text-center">
+              <div className="surface flex h-full flex-col items-center gap-4 rounded-2xl bg-background p-5 text-center sm:p-8">
                 <span className="flex size-16 items-center justify-center rounded-full border border-brand-gold/40 bg-ivory">
                   <Image src={badge.icon} alt="" width={32} height={32} className="size-8" />
                 </span>

@@ -38,7 +38,7 @@ const faqs = [
 export function FaqAccordion() {
   return (
     <section className="section-y">
-      <div className="container-narrow flex flex-col items-center gap-12">
+      <div className="container-narrow flex flex-col items-center gap-9 sm:gap-12">
         <Reveal>
           <SectionHeading eyebrow="FAQ" title="Frequently Asked Questions" align="center" />
         </Reveal>

@@ -30,7 +30,7 @@ export function GemstoneGrid({ items }: { items: Gemstone[] }) {
   return (
     <StaggerGrid
       key={items.map((i) => i.slug).join("|")}
-      className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3"
+      className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3"
     >
       {items.map((gemstone) => (
         <StaggerItem key={gemstone.slug} className="h-full">

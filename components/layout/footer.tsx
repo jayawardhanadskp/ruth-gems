@@ -49,8 +49,8 @@ const socialIcons = [
 export function Footer() {
   return (
     <footer className="border-t border-line bg-ivory">
-      <div className="container-page flex flex-col gap-14 py-16 sm:py-20">
-        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+      <div className="container-page flex flex-col gap-10 py-12 sm:gap-14 sm:py-20">
+        <div className="flex flex-col gap-9 sm:gap-12 lg:flex-row lg:justify-between">
           <div className="flex max-w-xs flex-col gap-7">
             <Wordmark />
             <p className="text-sm leading-relaxed text-stone">

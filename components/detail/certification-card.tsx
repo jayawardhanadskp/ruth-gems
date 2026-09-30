@@ -39,7 +39,7 @@ export function CertificationCard({ gemstone }: { gemstone: Gemstone }) {
   const lab = details?.lab ?? gemstone.certification;
 
   return (
-    <div className="surface flex flex-col items-start gap-4 self-start rounded-3xl p-8 shadow-md sm:p-10 lg:sticky lg:top-28">
+    <div className="surface flex flex-col items-start gap-4 self-start rounded-3xl p-6 shadow-md sm:p-10 lg:sticky lg:top-28">
       <ShieldCheck className="size-12 text-brand-green" strokeWidth={1.25} />
       <p className="eyebrow">Independently Certified</p>
       <p className="font-display text-3xl leading-tight font-semibold text-brand-ink">

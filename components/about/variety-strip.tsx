@@ -5,7 +5,7 @@ import { gemVarieties } from "@/lib/data";
 export function VarietyStrip() {
   return (
     <section className="section-y">
-      <div className="container-page flex flex-col items-center gap-12">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-12">
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <p className="eyebrow flex items-center gap-3">
             <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />

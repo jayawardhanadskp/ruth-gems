@@ -19,7 +19,7 @@ export function ClosingCta() {
           Tell us what you&apos;re looking for, or arrange a private viewing
           in Colombo or Ratnapura. We reply personally to every enquiry.
         </p>
-        <div className="mt-3 flex flex-wrap justify-center gap-3">
+        <div className="mt-3 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row max-sm:[&>*]:w-full">
           <EnquiryDialog
             title="Arrange a Viewing"
             trigger={<Button size="lg">Arrange a Viewing</Button>}

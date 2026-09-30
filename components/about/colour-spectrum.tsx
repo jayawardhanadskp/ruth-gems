@@ -5,7 +5,7 @@ import { colourSpectrum } from "@/lib/data";
 export function ColourSpectrum() {
   return (
     <section data-tone="dark" className="section-y bg-brand-forest-dark">
-      <div className="container-page flex flex-col items-center gap-14">
+      <div className="container-page flex flex-col items-center gap-9 sm:gap-14">
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <p className="eyebrow flex items-center gap-3">
             <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />

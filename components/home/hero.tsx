@@ -68,7 +68,7 @@ export function Hero() {
           character of Ceylon gemstones. Explore a collection where every
           stone has its own story to tell.
         </motion.p>
-        <motion.div variants={item} className="flex flex-wrap items-center gap-3">
+        <motion.div variants={item} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center max-sm:[&>*]:w-full">
           <Button nativeButton={false} size="lg" variant="gold" render={<Link href="/collection" />}>
             Browse Gemstones
           </Button>
