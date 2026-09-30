@@ -50,132 +50,107 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="flex flex-col gap-10 bg-white px-4 pt-10 pb-14 sm:px-6 lg:flex-row lg:items-start lg:gap-[3.75vw] lg:px-[4.167vw] lg:pt-[3.125vw] lg:pb-[4.688vw]"
+      className="container-page grid gap-10 py-section-sm lg:grid-cols-12 lg:items-start lg:gap-14"
     >
-      <Reveal className="flex-1 rounded-2xl border border-[#e2d8c6] bg-brand-cream/60 p-6 sm:p-8 lg:rounded-[1.042vw] lg:p-[2.083vw]">
-        <h2 className="font-display text-2xl font-semibold text-brand-ink lg:text-[1.563vw]">
+      <Reveal className="surface rounded-3xl p-6 shadow-md sm:p-10 lg:col-span-7">
+        <h2 className="font-display type-h3 font-medium text-brand-ink">
           Send us a message
         </h2>
-        <p className="mt-2 text-sm text-[#5c5347] lg:mt-[0.521vw] lg:text-[0.833vw]">
+        <p className="mt-2 text-stone">
           Fill in the form below and our team will reply within one business
           day.
         </p>
 
         {submitted ? (
-          <div className="mt-8 flex flex-col items-center gap-3 rounded-xl bg-white p-8 text-center lg:mt-[2.083vw]">
-            <CheckCircle2 className="size-10 text-brand-green" />
-            <p className="font-display text-2xl text-brand-ink">Thank you</p>
-            <p className="text-sm text-[#5c5347]">
+          <div
+            role="status"
+            className="mt-8 flex flex-col items-center gap-3 rounded-2xl bg-ivory p-8 text-center"
+          >
+            <CheckCircle2 className="size-12 text-brand-green" strokeWidth={1.25} />
+            <p className="font-display type-h3 text-brand-ink">Thank you</p>
+            <p className="text-stone">
               We&apos;ve received your message. Our team will be in touch
               soon.
             </p>
-            <Button
-              className="mt-2 h-11 rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90"
-              onClick={() => setSubmitted(false)}
-            >
+            <Button className="mt-3" onClick={() => setSubmitted(false)}>
               Send another message
             </Button>
           </div>
         ) : (
-          <form
-            className="mt-6 flex flex-col gap-4 lg:mt-[1.563vw] lg:gap-[1.042vw]"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-name">Full name</Label>
+          <form className="mt-8 flex flex-col gap-5" noValidate onSubmit={handleSubmit(onSubmit)}>
+            <Field label="Full name" id="contact-name" error={errors.name?.message}>
               <Input
                 id="contact-name"
+                autoComplete="name"
                 placeholder="Your name"
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? "contact-name-error" : undefined}
                 {...register("name")}
               />
-              {errors.name && (
-                <p className="text-xs text-destructive">
-                  {errors.name.message}
-                </p>
-              )}
+            </Field>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Email" id="contact-email" error={errors.email?.message}>
+                <Input
+                  id="contact-email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "contact-email-error" : undefined}
+                  {...register("email")}
+                />
+              </Field>
+              <Field label="Phone / WhatsApp" id="contact-phone" error={errors.phone?.message}>
+                <Input
+                  id="contact-phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="+94 7X XXX XXXX"
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? "contact-phone-error" : undefined}
+                  {...register("phone")}
+                />
+              </Field>
             </div>
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-email">Email</Label>
-              <Input
-                id="contact-email"
-                type="email"
-                placeholder="you@example.com"
-                {...register("email")}
-              />
-              {errors.email && (
-                <p className="text-xs text-destructive">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-phone">Phone / WhatsApp</Label>
-              <Input
-                id="contact-phone"
-                placeholder="+94 7X XXX XXXX"
-                {...register("phone")}
-              />
-              {errors.phone && (
-                <p className="text-xs text-destructive">
-                  {errors.phone.message}
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-message">Message</Label>
+            <Field label="Message" id="contact-message">
               <Textarea
                 id="contact-message"
                 placeholder="Tell us what you're looking for, or how we can help."
-                rows={4}
+                rows={5}
                 {...register("message")}
               />
-            </div>
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="mt-2 h-11 rounded-lg bg-brand-green text-brand-cream hover:bg-brand-green/90 lg:mt-[0.521vw]"
-            >
+            </Field>
+            <Button type="submit" size="lg" disabled={isSubmitting} className="mt-2 w-full sm:w-auto sm:self-start">
               {isSubmitting ? "Sending…" : "Send Message"}
             </Button>
           </form>
         )}
       </Reveal>
 
-      <Reveal
-        delay={0.1}
-        className="flex flex-col gap-6 lg:w-[26.042vw] lg:gap-[1.563vw]"
-      >
-        <div className="flex flex-col gap-4 lg:gap-[1.042vw]">
+      <Reveal delay={0.1} className="flex flex-col gap-5 lg:col-span-5">
+        <ul className="flex flex-col gap-3">
           {infoCards.map(({ icon: Icon, label, lines }) => (
-            <div
-              key={label}
-              className="flex items-center gap-4 rounded-xl border border-[#e2d8c6] p-4 lg:gap-[0.833vw] lg:rounded-[0.833vw] lg:p-[1.042vw]"
-            >
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-green/10 lg:size-[2.5vw]">
-                <Icon className="size-5 text-brand-green-light lg:size-[1.146vw]" />
-              </div>
+            <li key={label} className="surface flex items-center gap-4 rounded-2xl p-5">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
+                <Icon className="size-5 text-brand-green" strokeWidth={1.5} />
+              </span>
               <div className="flex flex-col gap-0.5">
-                <p className="text-sm font-semibold text-brand-ink lg:text-[0.833vw]">
-                  {label}
-                </p>
+                <p className="font-display text-xl font-semibold text-brand-ink">{label}</p>
                 {lines.map((line) => (
-                  <p
-                    key={line}
-                    className="text-[13px] text-[#5c5347] lg:text-[0.729vw]"
-                  >
+                  <p key={line} className="text-sm text-stone">
                     {line}
                   </p>
                 ))}
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="relative h-[220px] w-full overflow-hidden rounded-xl border border-[#e2d8c6] lg:h-[13.021vw] lg:rounded-[0.833vw]">
+        <div className="surface relative aspect-[16/10] w-full overflow-hidden rounded-2xl p-1.5">
           <iframe
             title="Ruth Gems office location, Ratnapura, Sri Lanka"
             src="https://www.google.com/maps?q=Ratnapura,+Sri+Lanka&output=embed"
-            className="absolute inset-0 size-full border-0"
+            className="size-full rounded-xl border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
@@ -185,25 +160,39 @@ export function ContactSection() {
           href="https://wa.me/94770000000"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-brand-green bg-brand-green/5 p-4 transition-colors hover:bg-brand-green/10 lg:gap-[0.833vw] lg:rounded-[0.833vw] lg:p-[1.042vw]"
+          className="group flex min-h-[4.5rem] items-center gap-4 rounded-2xl border border-brand-green/40 bg-brand-green/[0.06] p-5 transition-[transform,background-color,border-color] duration-[var(--duration-press)] ease-out active:scale-[0.99] [@media(hover:hover)]:hover:border-brand-green [@media(hover:hover)]:hover:bg-brand-green/10"
         >
-          <Image
-            src="/images/icons/whatsapp.svg"
-            alt=""
-            width={24}
-            height={24}
-            className="lg:size-[1.25vw]"
-          />
+          <Image src="/images/icons/whatsapp.svg" alt="" width={28} height={28} />
           <div>
-            <p className="text-sm font-semibold text-brand-ink lg:text-[0.833vw]">
-              Chat on WhatsApp
-            </p>
-            <p className="text-[13px] text-[#5c5347] lg:text-[0.729vw]">
-              +94 77 000 0000
-            </p>
+            <p className="font-display text-xl font-semibold text-brand-ink">Chat on WhatsApp</p>
+            <p className="text-sm text-stone">+94 77 000 0000</p>
           </div>
         </a>
       </Reveal>
     </section>
+  );
+}
+
+function Field({
+  label,
+  id,
+  error,
+  children,
+}: {
+  label: string;
+  id: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor={id}>{label}</Label>
+      {children}
+      {error && (
+        <p id={`${id}-error`} role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }

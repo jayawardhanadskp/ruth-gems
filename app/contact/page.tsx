@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <div className="px-4 pt-6 sm:px-6 lg:px-[4.167vw] lg:pt-[1.25vw]">
+      <div className="bg-ivory"><div className="container-page pt-2">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
-      </div>
+      </div></div>
       <ContactHero />
       <ContactSection />
     </>
