@@ -21,33 +21,27 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section id="contact" className="bg-[#f5efe6] px-4 py-16 sm:px-6 lg:px-[4.167vw] lg:py-[5vw]">
-      <div className="flex flex-col items-center gap-12 lg:gap-[2.7083vw]">
-        <Reveal className="flex flex-col items-center gap-3 text-center lg:gap-[0.625vw]">
-          <p className="text-xs font-semibold tracking-[2.16px] text-brand-gold-muted uppercase lg:text-[0.625vw] lg:tracking-[0.1125vw]">
+    <section className="section-y bg-ivory">
+      <div className="container-page flex flex-col items-center gap-14">
+        <Reveal className="flex flex-col items-center gap-4 text-center">
+          <p className="eyebrow flex items-center gap-3">
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
             Trust &amp; Authenticity
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
           </p>
-          <h2 className="font-display text-4xl font-semibold text-brand-ink lg:text-[2.2917vw] lg:leading-normal">
+          <h2 className="font-display type-h2 font-medium text-balance text-brand-ink">
             Buy With Complete Confidence
           </h2>
         </Reveal>
-        <StaggerGrid className="grid w-full grid-cols-1 gap-10 sm:grid-cols-3 lg:gap-[2.5vw]">
+        <StaggerGrid className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
           {badges.map((badge) => (
-            <StaggerItem key={badge.title}>
-              <div className="flex flex-col items-center gap-4 text-center lg:gap-[0.833vw]">
-                <Image
-                  src={badge.icon}
-                  alt=""
-                  width={46}
-                  height={46}
-                  className="size-[46px] lg:size-[2.396vw]"
-                />
-                <p className="font-display text-2xl font-semibold text-brand-ink lg:text-[1.4583vw] lg:leading-normal">
-                  {badge.title}
-                </p>
-                <p className="text-[15px] leading-[25px] text-[#6e6b67] lg:text-[0.78125vw] lg:leading-[1.302vw]">
-                  {badge.body}
-                </p>
+            <StaggerItem key={badge.title} className="h-full">
+              <div className="surface flex h-full flex-col items-center gap-4 rounded-2xl bg-background p-8 text-center">
+                <span className="flex size-16 items-center justify-center rounded-full border border-brand-gold/40 bg-ivory">
+                  <Image src={badge.icon} alt="" width={32} height={32} className="size-8" />
+                </span>
+                <p className="font-display text-2xl font-semibold text-brand-ink">{badge.title}</p>
+                <p className="text-[0.9375rem] leading-relaxed text-stone">{badge.body}</p>
               </div>
             </StaggerItem>
           ))}

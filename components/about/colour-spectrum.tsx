@@ -4,29 +4,31 @@ import { colourSpectrum } from "@/lib/data";
 
 export function ColourSpectrum() {
   return (
-    <section className="bg-brand-forest-dark px-4 py-16 sm:px-6 lg:px-[4.167vw] lg:py-[5vw]">
-      <div className="flex flex-col items-center gap-12 lg:gap-[2.5vw]">
-        <Reveal className="flex flex-col items-center gap-3 text-center lg:gap-[0.625vw]">
-          <p className="text-xs font-semibold tracking-[2.16px] text-brand-gold uppercase lg:text-[0.625vw] lg:tracking-[0.1125vw]">
+    <section data-tone="dark" className="section-y bg-brand-forest-dark">
+      <div className="container-page flex flex-col items-center gap-14">
+        <Reveal className="flex flex-col items-center gap-4 text-center">
+          <p className="eyebrow flex items-center gap-3">
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
             A Spectrum of Colour
+            <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
           </p>
-          <h2 className="font-display text-4xl font-semibold text-white lg:text-[2.2917vw] lg:leading-normal">
+          <h2 className="font-display type-h2 font-medium text-brand-cream">
             The Colours of Ceylon
           </h2>
         </Reveal>
-        <StaggerGrid className="flex w-full flex-wrap justify-center gap-8 lg:flex-nowrap lg:justify-between lg:gap-0">
+        <StaggerGrid className="grid w-full grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 lg:grid-cols-8">
           {colourSpectrum.map((colour) => (
-            <StaggerItem key={colour.name} className="flex flex-col items-center gap-3.5 lg:gap-[0.729vw]">
-              <div className="relative size-24 overflow-hidden rounded-full lg:size-[5vw]">
-                <Image src={colour.swatch} alt={colour.name} fill className="object-cover" />
+            <StaggerItem key={colour.name} className="flex flex-col items-center gap-4">
+              <div className="relative size-24 overflow-hidden rounded-full shadow-xl ring-1 ring-white/15 sm:size-28">
+                <Image src={colour.swatch} alt="" fill className="object-cover" />
               </div>
-              <p className="font-display text-xl font-semibold text-white lg:text-[1.1458vw] lg:leading-normal">
+              <p className="text-center font-display text-xl font-semibold text-brand-cream">
                 {colour.name}
               </p>
             </StaggerItem>
           ))}
         </StaggerGrid>
-        <Reveal className="max-w-[820px] text-center text-[15px] leading-[26px] text-[#d2d6ce] lg:max-w-[42.708vw] lg:text-[0.78125vw] lg:leading-[1.3542vw]">
+        <Reveal className="max-w-3xl text-center type-lead text-mist">
           From the deep royal blues of Ratnapura to the elusive pink-orange
           of padparadscha, Ceylon produces a range of hues unmatched by any
           single source.
