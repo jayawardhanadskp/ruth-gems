@@ -8,7 +8,7 @@ import { cn } from "cn"
  * pressed). Hover is gated to real pointers so touch doesn't get stuck states.
  */
 const buttonVariants = cva(
-  "group/button relative inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full border border-transparent text-sm font-semibold tracking-[0.01em] whitespace-nowrap select-none outline-none transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-press)] ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ring",
+  "group/button relative inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent text-sm font-semibold tracking-[0.01em] whitespace-nowrap select-none outline-none transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-press)] ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ring",
   {
     variants: {
       variant: {
