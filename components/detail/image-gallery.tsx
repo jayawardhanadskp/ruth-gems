@@ -17,28 +17,26 @@ export function ImageGallery({
 
   return (
     <div className="flex min-w-0 flex-col gap-4">
-      <div className="surface relative aspect-square w-full overflow-hidden rounded-3xl bg-sand p-2 shadow-md sm:aspect-[5/4] lg:aspect-square">
-        <div className="relative size-full overflow-hidden rounded-2xl bg-white">
-          <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, scale: reduce ? 1 : 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={images[active]}
-                alt={`${name}, view ${active + 1} of ${images.length}`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 680px"
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-white sm:aspect-[5/4] lg:aspect-square">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, scale: reduce ? 1 : 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={images[active]}
+              alt={`${name}, view ${active + 1} of ${images.length}`}
+              fill
+              sizes="(max-width: 1024px) 100vw, 680px"
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
       {images.length > 1 && (
         <ul className="grid grid-cols-4 gap-3" aria-label="Gemstone views">
