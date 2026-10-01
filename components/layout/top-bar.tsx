@@ -42,7 +42,7 @@ export function TopBar() {
   return (
     <div
       data-tone="dark"
-      className="hidden bg-brand-forest-dark text-mist lg:block"
+      className="hidden bg-brand-ink text-mist lg:block"
     >
       <div className="container-page flex h-11 items-center justify-between text-xs tracking-[0.02em]">
         <div className="flex items-center gap-5">
