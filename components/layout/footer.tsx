@@ -49,9 +49,9 @@ const socialIcons = [
 export function Footer() {
   return (
     <footer className="border-t border-line bg-ivory">
-      <div className="container-page flex flex-col gap-10 py-12 sm:gap-14 sm:py-20">
-        <div className="flex flex-col gap-9 sm:gap-12 lg:flex-row lg:justify-between">
-          <div className="flex max-w-xs flex-col gap-7">
+      <div className="container-page flex flex-col gap-6 py-8 sm:gap-8 sm:py-10">
+        <div className="flex flex-col gap-7 sm:gap-8 lg:flex-row lg:justify-between">
+          <div className="flex max-w-xs flex-col gap-4">
             <Wordmark />
             <p className="text-sm leading-relaxed text-stone">
               No. 42, Gem Merchants Row
@@ -60,7 +60,7 @@ export function Footer() {
               <br />
               Sabaragamuwa Province, Sri Lanka
             </p>
-            <p className="border-t border-line pt-5 text-sm text-stone">
+            <p className="border-t border-line pt-3 text-sm text-stone">
               Office hours 9:00 – 18:00, Monday to Friday.
             </p>
             <ul className="-ml-3 flex items-center">
@@ -78,16 +78,16 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4 sm:gap-x-12">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4 sm:gap-x-12">
             {footerColumns.map((column) => (
-              <nav key={column.heading} aria-label={column.heading} className="flex flex-col gap-3">
+              <nav key={column.heading} aria-label={column.heading} className="flex flex-col gap-1.5">
                 <p className="eyebrow">{column.heading}</p>
                 <ul className="flex flex-col">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="inline-flex min-h-11 items-center text-sm text-ink-soft transition-colors duration-[var(--duration-hover)] ease-out hover:text-brand-green"
+                        className="inline-flex min-h-9 items-center sm:min-h-8 text-sm text-ink-soft transition-colors duration-[var(--duration-hover)] ease-out hover:text-brand-green"
                       >
                         {link.label}
                       </Link>
@@ -99,7 +99,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-line pt-7 text-xs leading-relaxed text-stone sm:flex-row sm:justify-between sm:gap-10">
+        <div className="flex flex-col gap-2 border-t border-line pt-5 text-xs leading-relaxed text-stone sm:flex-row sm:justify-between sm:gap-10">
           <p>
             © 2026 Serendib &amp; Sons. Licensed gem dealer, National Gem &amp;
             Jewellery Authority of Sri Lanka.
