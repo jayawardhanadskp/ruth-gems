@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { CtaBanner } from "@/components/common/cta-banner";
 import { FilterSidebar } from "@/components/collection/filter-sidebar";
@@ -28,23 +29,27 @@ export default async function CollectionPage({
 
   return (
     <>
-      <header className="border-b border-line bg-ivory">
-        <div className="container-page flex flex-col gap-6 pt-4 pb-section-sm">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Collection" }]} />
-          <div className="flex max-w-3xl flex-col gap-5">
-            <p className="eyebrow flex items-center gap-3">
-              <span aria-hidden className="size-1.5 rotate-45 bg-brand-gold" />
-              Ceylon Gemstones
-            </p>
-            <h1 className="font-display type-h1 font-medium text-brand-forest-dark">
-              The Collection
-            </h1>
-            <p className="type-lead max-w-2xl text-stone">
-              Every stone we currently hold, with its weight, cut, treatment and
-              origin stated plainly. Filter to find the one that speaks to you,
-              then arrange a private viewing.
-            </p>
-          </div>
+      <header data-tone="dark" className="relative isolate overflow-hidden bg-brand-ink">
+        <Image
+          src="/images/collection/page-title-band.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-10 object-cover"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-brand-ink/45" />
+        <div className="container-page flex flex-col items-center gap-4 py-10 text-center sm:gap-5 sm:py-16 lg:py-20">
+          <Breadcrumbs tone="dark" items={[{ label: "Home", href: "/" }, { label: "Collection" }]} />
+          <p className="eyebrow">Ceylon Gemstones</p>
+          <h1 className="font-display type-h1 font-medium text-brand-cream">
+            The Collection
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-brand-cream/85 sm:text-lg">
+            Every stone we currently hold, with its weight, cut, treatment and
+            origin stated plainly. Filter to find the one that speaks to you,
+            then arrange a private viewing.
+          </p>
         </div>
       </header>
 
