@@ -11,7 +11,7 @@ const images = [
 
 export function GiftBanner() {
   return (
-    <section className="section-y bg-sand/60">
+    <section className="section-y bg-white">
       <Reveal className="container-page">
         <Carousel
           label="Gift inspiration"

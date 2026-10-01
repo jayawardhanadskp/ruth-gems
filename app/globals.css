@@ -59,7 +59,7 @@
   --color-brand-ink: #1a1614;
 
   /* warm neutrals derived from the cream/ink pair */
-  --color-ivory: #faf6ee;
+  --color-ivory: #ffffff;
   --color-sand: #f3ecdf;
   --color-line: #e6dcc9;
   --color-stone: #6f6454;
@@ -106,7 +106,7 @@
 }
 
 :root {
-  --background: #fffdf9;
+  --background: #ffffff;
   --foreground: #1a1614;
   --card: #ffffff;
   --card-foreground: #1a1614;
