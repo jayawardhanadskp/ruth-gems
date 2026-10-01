@@ -263,8 +263,8 @@
 /* Scrim for text over photography. */
 @utility scrim-hero {
   background:
-    linear-gradient(180deg, rgb(2 33 23 / 0.55) 0%, rgb(2 33 23 / 0.25) 38%, rgb(2 33 23 / 0.78) 100%),
-    linear-gradient(90deg, rgb(2 33 23 / 0.6) 0%, transparent 70%);
+    linear-gradient(180deg, rgb(26 22 20 / 0.55) 0%, rgb(26 22 20 / 0.25) 38%, rgb(26 22 20 / 0.78) 100%),
+    linear-gradient(90deg, rgb(26 22 20 / 0.6) 0%, transparent 70%);
 }
 
 /* Horizontal scroller that snaps; hides the bar, keeps swipe. */

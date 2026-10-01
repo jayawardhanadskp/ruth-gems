@@ -22,7 +22,7 @@ export function Hero() {
   return (
     <section
       data-tone="dark"
-      className="relative isolate flex min-h-[34rem] items-end overflow-hidden bg-brand-forest-dark pb-14 sm:pb-20 lg:min-h-[44rem] lg:items-center lg:pb-0"
+      className="relative isolate flex min-h-[34rem] items-end overflow-hidden bg-brand-ink pb-14 sm:pb-20 lg:min-h-[44rem] lg:items-center lg:pb-0"
     >
       <motion.div
         aria-hidden

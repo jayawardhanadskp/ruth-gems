@@ -19,7 +19,7 @@ export function AboutHero() {
   return (
     <section
       data-tone="dark"
-      className="relative isolate flex min-h-[32rem] items-center overflow-hidden bg-brand-forest-dark lg:min-h-[40rem]"
+      className="relative isolate flex min-h-[32rem] items-center overflow-hidden bg-brand-ink lg:min-h-[40rem]"
     >
       {/* People, cropped from the right-hand side of the source photograph
           only: the source frame has baked-in text on its left, which we crop
@@ -36,9 +36,9 @@ export function AboutHero() {
             style={{ objectPosition: "88% center" }}
           />
         </Parallax>
-        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-brand-forest-dark via-brand-forest-dark/60 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-brand-ink via-brand-ink/60 to-transparent" />
       </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-forest-dark/80 via-transparent to-brand-forest-dark/30 sm:bg-none" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-ink/80 via-transparent to-brand-ink/30 sm:bg-none" />
 
       <motion.div
         variants={container}
